@@ -20,6 +20,6 @@ public class Airport {
 
     private String nameAirport;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private City city;
+  //  @ManyToOne(fetch = FetchType.LAZY)
+  //  private City city;
 }

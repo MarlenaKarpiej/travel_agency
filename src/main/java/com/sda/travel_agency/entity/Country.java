@@ -20,7 +20,7 @@ public class Country {
 
     private String countryName;
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    @Enumerated(EnumType.STRING)
+  //  @ManyToOne (fetch = FetchType.LAZY)
+  //  @Enumerated(EnumType.STRING)
     private Continent continent;
 }

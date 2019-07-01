@@ -4,13 +4,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Klinika dla zwierząt</title>
+    <title>Travel agency</title>
     <link href="/css/style.css"
           rel="stylesheet">
 </head>
 <body>
 <%@include file="fragments/header.jspf" %>
-<img src="/img/pobrane.jpg" width="50%" height="50%">
+<%--<img src="/img/pobrane.jpg" width="50%" height="50%">--%>
 ${index.message}
 
 

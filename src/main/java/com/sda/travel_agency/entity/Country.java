@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,5 +23,8 @@ public class Country {
 
     @Enumerated(EnumType.STRING)
     private Continent continent;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "country", cascade = CascadeType.ALL)
+    private List<City> cities;
 
 }

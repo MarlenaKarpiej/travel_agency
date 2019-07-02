@@ -23,8 +23,8 @@
     <br/>
 
 
-    <a href="/delete/${country.id}">Delete</a>
-    <a href="/country/edit-form/${country.id}">Edit</a>
+    <a href="/country/delete/${country.id}">Delete</a>
+    <a href="/country/edit/${country.id}">Edit</a>
     <a href="/city/edit-form/${country.id}">Add city</a>
     <br/><br/><br/>
 </c:forEach>

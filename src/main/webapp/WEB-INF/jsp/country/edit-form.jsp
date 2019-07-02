@@ -14,13 +14,15 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Edit country form</h2>
-<form:form action="/country/create/${country.id}" method="POST" modelAttribute="country">
+<form:form action="/country/edit/${country.id}" method="POST" modelAttribute="country">
     Country name: <form:input path="countryName"/> <br />
-    <%--<select name="continents">--%>
-        <%--<c:forEach items="${continents}" var="value">--%>
-            <%--<option value="${value}">${value}</option>--%>
-        <%--</c:forEach>--%>
-    <%--</select>--%>
+    Continent:
+    <select name="continent">
+        <c:set var="selected" value=""/>
+        <c:forEach items="${country.continent}" var="continent">
+            <option value="${continent.name}"></option>
+        </c:forEach>
+    </select><br/>
     <form:hidden path="id" />
     <input type="submit" value="Save"/>
 </form:form>

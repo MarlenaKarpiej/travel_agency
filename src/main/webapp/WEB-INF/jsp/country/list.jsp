@@ -23,17 +23,17 @@
 
     <c:forEach items="${country.cities}" var="city">
         <c:out value="${city.id}"/>
-        <c:out value="${city.cityName}"/>
+        <c:out value="${city.cityName}"/><br/>
 
-        <a href="/city/delete-city/${city.id}">Delete</a>
-        <a href="/city/edit-city/${city.id}/${country.id}">Edit</a>
+        <a href="/city/delete-city/${city.id}">Delete city</a>
+        <a href="/city/edit-city/${city.id}/${country.id}">Edit city</a>
         <a href="/hotel/create/${city.id}">Add hotel</a>
         <br/>
     </c:forEach>
 
 
-    <a href="/country/delete/${country.id}">Delete</a>
-    <a href="/country/edit/${country.id}">Edit</a>
+    <a href="/country/delete/${country.id}">Delete country</a>
+    <a href="/country/edit/${country.id}">Edit country</a>
     <a href="/city/create/${country.id}">Add city</a>
     <br/><br/><br/>
 </c:forEach>

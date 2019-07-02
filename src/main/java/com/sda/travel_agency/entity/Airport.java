@@ -18,7 +18,7 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String nameAirport;
+    private String airportName;
 
   //  @ManyToOne(fetch = FetchType.LAZY)
   //  private City city;

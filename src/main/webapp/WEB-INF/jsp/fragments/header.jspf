@@ -6,8 +6,9 @@
 <fieldset>
     <legend>Menu</legend>
 
-    <a href="/index">Home</a> |
-    <a href="/form">Creating a new trip</a> |
+    <a href="/country/index">Home</a> |
+    <a href="/country/create">Add country</a> |
+    <a href="/country/list">Country list</a> |
 
 
 </fieldset>

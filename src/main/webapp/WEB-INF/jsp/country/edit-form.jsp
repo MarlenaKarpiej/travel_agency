@@ -17,12 +17,13 @@
 <form:form action="/country/edit/${country.id}" method="POST" modelAttribute="country">
     Country name: <form:input path="countryName"/> <br />
     Continent:
-    <select name="continent">
-        <c:set var="selected" value=""/>
-        <c:forEach items="${country.continent}" var="continent">
-            <option value="${continent.name}"></option>
-        </c:forEach>
-    </select><br/>
+
+    <form:select path="continent">
+        <form:option value="" label="Please Select"/>
+        <form:options items="${enumValues}" />
+    </form:select>
+    <br/>
+
     <form:hidden path="id" />
     <input type="submit" value="Save"/>
 </form:form>

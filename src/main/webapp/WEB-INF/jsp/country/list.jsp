@@ -17,15 +17,24 @@
     <h3>Sorry, no records found</h3>
 </c:if>
 <c:forEach items="${countries}" var="country">
-    <c:out value="${country.id}" />
-    <c:out value="${country.countryName}" />
-    <c:out value="${country.continent}" />
-    <br/>
+    <c:out value="${country.id}"/>
+    <c:out value="${country.countryName}"/>
+    <c:out value="${country.continent}"/><br/>
+
+    <c:forEach items="${country.cities}" var="city">
+        <c:out value="${city.id}"/>
+        <c:out value="${city.cityName}"/>
+
+        <a href="/city/delete-city/${city.id}">Delete</a>
+        <a href="/city/edit-city/${city.id}/${country.id}">Edit</a>
+        <a href="/hotel/create/${city.id}">Add hotel</a>
+        <br/>
+    </c:forEach>
 
 
     <a href="/country/delete/${country.id}">Delete</a>
     <a href="/country/edit/${country.id}">Edit</a>
-    <a href="/city/edit-form/${country.id}">Add city</a>
+    <a href="/city/create/${country.id}">Add city</a>
     <br/><br/><br/>
 </c:forEach>
 

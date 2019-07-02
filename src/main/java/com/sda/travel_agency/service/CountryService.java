@@ -30,12 +30,17 @@ public class CountryService {
         countryRepository.save(country);
     }
 
-    public List<Country> findAllByNameCountryContaining(String countryName){
+    public List<Country> findAllByCountryNameContaining(String countryName){
         return countryRepository.findByCountryNameContaining(countryName);
     }
 
     public void deleteById (Long id){
         countryRepository.deleteById(id);
     }
+
+    public Optional<Country> findCountryById(Long countryId){
+        return countryRepository.findById(countryId);
+    }
+
 
 }

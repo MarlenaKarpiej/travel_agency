@@ -2,6 +2,7 @@ package com.sda.travel_agency.controller;
 
 
 import com.sda.travel_agency.entity.Country;
+import com.sda.travel_agency.model.FilterForm;
 import com.sda.travel_agency.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -68,5 +70,19 @@ public class CountryController {
     public String delete(@PathVariable("id") Long id){
         countryService.deleteById(id);
         return "redirect:/country/list";
+    }
+
+    @GetMapping("/find-by-name")
+    public String findByNameForm(Model model) {
+        model.addAttribute("filterForm", new FilterForm());
+        return "country/find";
+    }
+
+    @PostMapping("/find-by-name")
+    public String findByNameForm(@ModelAttribute("filterForm") FilterForm filterForm,
+                                     Model model) {
+        List<Country> foundCountry = countryService.findAllByCountryNameContaining(filterForm.getCountryName());
+        model.addAttribute("countries", foundCountry);
+        return "country/list";
     }
 }

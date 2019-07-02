@@ -16,7 +16,7 @@ import java.util.List;
 public class Country {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //musieliśmy dopisać strategy, ponieważ dodaliśmy już kilku włascicieli w data.sql
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String countryName;

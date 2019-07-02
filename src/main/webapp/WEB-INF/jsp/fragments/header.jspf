@@ -9,6 +9,7 @@
     <a href="/country/index">Home</a> |
     <a href="/country/create">Add country</a> |
     <a href="/country/list">Country list</a> |
+    <a href="/country/find">Search country</a>
 
 
 </fieldset>

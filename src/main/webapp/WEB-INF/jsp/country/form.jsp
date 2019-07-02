@@ -15,12 +15,10 @@
 <form:form action="/country/create" method="POST" modelAttribute="country">
     Country name: <form:input path="countryName"/> <br />
     Continent:
-    <select name="continent">
-        <c:set var="selected" value=""/>
-        <c:forEach items="${country.continent}" var="continent">
-            <option value="${continent.name}"></option>
-        </c:forEach>
-    </select>
+    <form:select path="continent">
+        <form:option value="" label="Please Select"/>
+        <form:options items="${enumValues}" />
+    </form:select>
     <br/>
 
     <input type="submit" value="Create"/>

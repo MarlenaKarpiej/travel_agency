@@ -58,7 +58,7 @@ public class HotelController {
             model.addAttribute("cityId", cityId);
             return "hotel/edit-hotel";
         } else {
-            return "redirect:/hotel/from-hotel";
+            return "redirect:/hotel/form-hotel";
         }
     }
 

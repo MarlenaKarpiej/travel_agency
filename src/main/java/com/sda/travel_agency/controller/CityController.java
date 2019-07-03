@@ -45,7 +45,7 @@ public class CityController {
     @GetMapping("/delete-city/{cityId}")
     public String deleteCity(@PathVariable("cityId") Long id){
         cityService.deleteById(id);
-        return "country/list";
+        return "redirect:/country/list";
     }
 
     @GetMapping("/edit-city/{cityId}/{countryId}")

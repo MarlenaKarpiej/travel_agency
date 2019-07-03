@@ -24,7 +24,7 @@ public class Country {
     @Enumerated(EnumType.STRING)
     private Continent continent;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "country", cascade = CascadeType.ALL) //jeżeli usuniesz cascade = CascadeType.ALL to usuwanie miast zacznie działać
     private List<City> cities;
 
 }

@@ -42,7 +42,7 @@ public class CountryController {
 
     @GetMapping("edit/{id}")
     public String editCountryForm(@PathVariable("id") Long id, Model model){
-        Optional<Country> maybeCountry = countryService.getCountryById(id);
+        Optional<Country> maybeCountry = countryService.findCountryById(id);
 
         if(maybeCountry.isPresent()){
             model.addAttribute("country", maybeCountry.get());
@@ -75,11 +75,11 @@ public class CountryController {
     @GetMapping("/find-by-name")
     public String findByNameForm(Model model) {
         model.addAttribute("filterForm", new FilterForm());
-        return "country/find";
+        return "country/find-by-name";
     }
 
     @PostMapping("/find-by-name")
-    public String findByNameForm(@ModelAttribute("filterForm") FilterForm filterForm,
+    public String findFilter(@ModelAttribute("filterForm") FilterForm filterForm,
                                      Model model) {
         List<Country> foundCountry = countryService.findAllByCountryNameContaining(filterForm.getCountryName());
         model.addAttribute("countries", foundCountry);

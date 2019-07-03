@@ -53,7 +53,7 @@ public class CityController {
 
     @GetMapping("/edit-city/{cityId}/{countryId}")
     public String editCity(@PathVariable("cityId") Long cityId, @PathVariable("countryId") Long countryId, Model model){
-        Optional<City> maybeCity= cityRepository.findById(cityId);
+        Optional<City> maybeCity= cityService.findCityById(cityId);
 
         if(maybeCity.isPresent()) {
             model.addAttribute("city", maybeCity.get());

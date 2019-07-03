@@ -22,10 +22,6 @@ public class CountryService {
         return countryRepository.findAll();
     }
 
-    public Optional<Country> getCountryById(Long id){
-        return countryRepository.findById(id);
-    }
-
     public void editCountry (Country country){
         countryRepository.save(country);
     }

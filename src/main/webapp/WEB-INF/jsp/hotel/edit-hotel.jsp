@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel agency</title>
+    <link href="/css/style.css"
+          rel="stylesheet">
+</head>
+<body>
+<%@include file="../fragments/header.jspf" %>
+<h2>Edit hotel form</h2>
+<form:form action="/city/edit-hotel/${hotel.id}/${city.id}" method="POST" modelAttribute="hotel">
+    Hotel name: <form:input path="hotelName"/> <br />
+    Property class: <form:input path="propertyClass"/> <br />
+    Description: <form:input path="description"/> <br />
+    <br/>
+    <form:hidden path="id" />
+    <input type="submit" value="Save"/>
+</form:form>
+</body>
+</html>

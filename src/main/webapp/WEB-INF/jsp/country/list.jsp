@@ -22,11 +22,11 @@
     <c:out value="${country.continent}"/>
     <a href="/country/delete/${country.id}">Delete country</a>
     <a href="/country/edit/${country.id}">Edit country</a>
-    <a href="/city/create/${country.id}">Add city</a><br/>
+    <a href="/city/create/${country.id}">Add city</a><br/><br/>
 
     <c:forEach items="${country.cities}" var="city">
         <c:out value="${city.id}"/>
-        <c:out value="${city.cityName}"/><br/>
+        <c:out value="${city.cityName}"/>
 
         <a href="/city/delete-city/${city.id}">Delete city</a>
         <a href="/city/edit-city/${city.id}/${country.id}">Edit city</a>
@@ -40,9 +40,9 @@
             Description: <c:out value="${hotel.description}"/><br/>
 
             <a href="/hotel/delete-hotel/${hotel.id}">Delete hotel</a>
-            <a href="/hotel/edit-hotel/${hotel.id}/${country.id}">Edit hotel</a>
+            <a href="/hotel/edit-hotel/${hotel.id}/${city.id}">Edit hotel</a>
 
-            <br/>
+            <br/><br/>
         </c:forEach>
     </c:forEach>
 

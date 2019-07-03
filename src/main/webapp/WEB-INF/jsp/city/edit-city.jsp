@@ -15,7 +15,7 @@
 <form:form action="/city/edit-city/${city.id}/${country.id}" method="POST" modelAttribute="city">
     City name: <form:input path="cityName"/> <br />
     <form:hidden path="id" />
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Save"/>
 </form:form>
 </body>
 </html>

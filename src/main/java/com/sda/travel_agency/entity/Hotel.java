@@ -23,7 +23,7 @@ public class Hotel {
     private int propertyClass;
     private String description;
 
- //   @ManyToOne(fetch = FetchType.LAZY)
- //   private City city;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private City city;
 
 }

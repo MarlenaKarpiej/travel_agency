@@ -62,7 +62,6 @@ public class CountryController {
     public String countryList(Model model){
         Iterable<Country> countries = countryService.getAllCountry();
         model.addAttribute("countries", countries);
-
         return "country/list";
     }
 

@@ -22,9 +22,6 @@ import java.util.Optional;
 public class CityController {
 
     @Autowired
-    private CityRepository cityRepository;
-
-    @Autowired
     private CityService cityService;
 
     @Autowired
@@ -48,7 +45,7 @@ public class CityController {
     @GetMapping("/delete-city/{cityId}")
     public String deleteCity(@PathVariable("cityId") Long id){
         cityService.deleteById(id);
-        return "redirect:/country/list";
+        return "country/list";
     }
 
     @GetMapping("/edit-city/{cityId}/{countryId}")
@@ -58,7 +55,7 @@ public class CityController {
         if(maybeCity.isPresent()) {
             model.addAttribute("city", maybeCity.get());
             model.addAttribute("countryId", countryId);
-            return "edit-city";
+            return "city/edit-city";
         } else {
             return "redirect:/city/from-city";
         }

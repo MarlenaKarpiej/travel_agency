@@ -19,7 +19,10 @@
 <c:forEach items="${countries}" var="country">
     <c:out value="${country.id}"/>
     <c:out value="${country.countryName}"/>
-    <c:out value="${country.continent}"/><br/>
+    <c:out value="${country.continent}"/>
+    <a href="/country/delete/${country.id}">Delete country</a>
+    <a href="/country/edit/${country.id}">Edit country</a>
+    <a href="/city/create/${country.id}">Add city</a><br/>
 
     <c:forEach items="${country.cities}" var="city">
         <c:out value="${city.id}"/>
@@ -29,12 +32,22 @@
         <a href="/city/edit-city/${city.id}/${country.id}">Edit city</a>
         <a href="/hotel/create/${city.id}">Add hotel</a>
         <br/>
+
+        <c:forEach items="${city.hotels}" var="hotel">
+            <c:out value="${hotel.id}"/>
+            Name: <c:out value="${hotel.hotelName}"/><br/>
+            Property class: <c:out value="${hotel.propertyClass}"/><br/>
+            Description: <c:out value="${hotel.description}"/><br/>
+
+            <a href="/hotel/delete-hotel/${hotel.id}">Delete hotel</a>
+            <a href="/hotel/edit-hotel/${hotel.id}/${country.id}">Edit hotel</a>
+
+            <br/>
+        </c:forEach>
     </c:forEach>
 
 
-    <a href="/country/delete/${country.id}">Delete country</a>
-    <a href="/country/edit/${country.id}">Edit country</a>
-    <a href="/city/create/${country.id}">Add city</a>
+
     <br/><br/><br/>
 </c:forEach>
 

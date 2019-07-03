@@ -17,8 +17,6 @@ public class CityService {
     private final CityRepository cityRepository;
     private final CountryService countryService;
 
-
-
     public Iterable<City>  getAllCity(){
         return cityRepository.findAll();
     }
@@ -33,8 +31,8 @@ public class CityService {
         return cityRepository.findByCityNameContaining(cityName);
     }
 
-    public void deleteById (Long id){
-        cityRepository.deleteById(id);
+    public void deleteById (Long cityId){
+        cityRepository.deleteById(cityId);
     }
 
     public Optional<City> findCityById(Long cityId) {

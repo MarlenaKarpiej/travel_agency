@@ -12,9 +12,9 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create city form</h2>
-<form:form action="/city/create" method="POST" modelAttribute="newCity">
+<form:form action="/city/create/${countryId}" method="POST" modelAttribute="newCity">
+    Country name: <c:out value="${countryName}"/><br/>
     City name: <form:input path="cityName"/> <br />
-    </select>
     <br/>
 
     <input type="submit" value="Create"/>

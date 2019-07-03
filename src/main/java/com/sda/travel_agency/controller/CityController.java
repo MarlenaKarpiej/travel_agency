@@ -2,8 +2,10 @@ package com.sda.travel_agency.controller;
 
 
 import com.sda.travel_agency.entity.City;
+import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.repository.CityRepository;
 import com.sda.travel_agency.service.CityService;
+import com.sda.travel_agency.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class CityController {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    private CountryService countryService;
+
     @PostMapping("create/{countryId}")
     public String addNewCity(@ModelAttribute("newCity")City city, @PathVariable("countryId") Long countryId){
         cityService.createOrUpdateCityForCountry(city, countryId);
@@ -33,8 +38,10 @@ public class CityController {
 
     @GetMapping("create/{countryId}")
     public  String addNewCityForm(Model model, @PathVariable("countryId")Long countryId){
+        Optional<Country> country = countryService.findCountryById(countryId);
         model.addAttribute("newCity", new City());
         model.addAttribute("countryId", countryId);
+        model.addAttribute("countryName", country.get().getCountryName());
         return "city/form-city";
     }
 

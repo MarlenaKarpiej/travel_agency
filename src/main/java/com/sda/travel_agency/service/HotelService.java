@@ -25,7 +25,7 @@ public class HotelService {
         hotelRepisitory.save(hotel);
     }
 
-    public Iterable<Hotel>  getAllHottel(){
+    public Iterable<Hotel> getAllHotel(){
         return hotelRepisitory.findAll();
     }
 

@@ -22,6 +22,9 @@ public class CityService {
         cityRepository.save(city);
     }
 
+    public void deleteById (Long id){
+        cityRepository.deleteById(id);
+    }
 
 
     public Optional<City> getCityById(Long cityId) {

@@ -31,16 +31,26 @@
         <a href="/city/delete-city/${city.id}">Delete city</a>
         <a href="/city/edit-city/${city.id}/${country.id}">Edit city</a>
         <a href="/hotel/create/${city.id}">Add hotel</a>
+        <a href="/airport/create/${city.id}">Add airport</a>
         <br/>
 
         <c:forEach items="${city.hotels}" var="hotel">
             <c:out value="${hotel.id}"/>
-            Name: <c:out value="${hotel.hotelName}"/><br/>
+            Hotel name: <c:out value="${hotel.hotelName}"/><br/>
             Property class: <c:out value="${hotel.propertyClass}"/><br/>
             Description: <c:out value="${hotel.description}"/><br/>
 
             <a href="/hotel/delete-hotel/${hotel.id}">Delete hotel</a>
             <a href="/hotel/edit-hotel/${hotel.id}/${city.id}">Edit hotel</a>
+
+            <br/><br/>
+        </c:forEach>
+        <c:forEach items="${city.airports}" var="airport">
+            <c:out value="${airport.id}"/>
+            Airport name: <c:out value="${airport.airportName}"/><br/>
+
+            <a href="/airport/delete-airport/${airport.id}">Delete airport</a>
+            <a href="/airport/edit-airport/${airport.id}/${airport.id}">Edit airport</a>
 
             <br/><br/>
         </c:forEach>

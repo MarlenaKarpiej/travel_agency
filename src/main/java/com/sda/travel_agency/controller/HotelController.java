@@ -44,8 +44,8 @@ public class HotelController {
     }
 
     @GetMapping("/delete-hotel/{hotelId}")
-    public String deleteHotel(@PathVariable("hotelId") Long id){
-        hotelService.deleteById(id);
+    public String deleteHotel(@PathVariable("hotelId") Long hotelId){
+        hotelService.deleteById(hotelId);
         return "redirect:/country/list";
     }
 
@@ -58,7 +58,7 @@ public class HotelController {
             model.addAttribute("cityId", cityId);
             return "hotel/edit-hotel";
         } else {
-            return "redirect:/hotel/form-hotel";
+            return "redirect:/form-hotel";
         }
     }
 

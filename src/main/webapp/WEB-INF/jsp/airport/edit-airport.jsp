@@ -14,8 +14,6 @@
 <h2>Edit airport form</h2>
 <form:form action="/city/edit-airport/${airport.id}/${city.id}" method="POST" modelAttribute="airport">
     Airport name: <form:input path="airportName"/> <br />
-    Property class: <form:input path="propertyClass"/> <br />
-    Description: <form:input path="description"/> <br />
     <br/>
     <form:hidden path="id" />
     <input type="submit" value="Save"/>

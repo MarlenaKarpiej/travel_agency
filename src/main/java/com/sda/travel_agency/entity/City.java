@@ -25,6 +25,9 @@ public class City {
     @ManyToOne(fetch = FetchType.EAGER)
     private Country country;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "city", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "city")//, cascade = CascadeType.ALL)
     private List<Hotel> hotels;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")//, cascade = CascadeType.ALL)
+    private List<Airport> airports;
 }

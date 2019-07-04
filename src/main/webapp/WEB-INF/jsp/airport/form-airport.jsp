@@ -15,8 +15,6 @@
 <form:form action="/airport/create/${cityId}" method="POST" modelAttribute="newAirport">
     City name: <c:out value="${cityName}"/><br/>
     Airport name: <form:input path="airportName"/> <br />
-    Property class: <form:input path="propertyClass"/> <br />
-    Description: <form:input path="description"/> <br />
     <br/>
 
     <input type="submit" value="Create"/>

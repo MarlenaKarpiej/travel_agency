@@ -51,13 +51,14 @@ public class CityController {
     @GetMapping("/edit-city/{cityId}/{countryId}")
     public String editCity(@PathVariable("cityId") Long cityId, @PathVariable("countryId") Long countryId, Model model){
         Optional<City> maybeCity= cityService.findCityById(cityId);
-
+        Optional<Country> country = countryService.findCountryById(countryId);
         if(maybeCity.isPresent()) {
             model.addAttribute("city", maybeCity.get());
             model.addAttribute("countryId", countryId);
+            model.addAttribute("countryName", country.get().getCountryName());
             return "city/edit-city";
         } else {
-            return "redirect:/city/from-city";
+            return "redirect:/from-city";
         }
     }
 

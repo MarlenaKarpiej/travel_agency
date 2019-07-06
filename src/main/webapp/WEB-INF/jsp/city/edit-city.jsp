@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Edit city form</h2>
+<h3>Edit city form</h3>
 <form:form action="/admin/city/edit-city/${city.id}/${countryId}" method="POST" modelAttribute="city">
     Country name: <c:out value="${countryName}"/><br/>
     City name: <form:input path="cityName"/> <br />

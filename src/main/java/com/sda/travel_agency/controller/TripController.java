@@ -29,12 +29,6 @@ public class TripController {
     @Autowired
     private AirportService airportService;
 
-    @PostMapping("/create/{fromAirportId}/{toAirportId}/{hotelId}")
-    public String addNewTrip(@ModelAttribute("newTrip") TripDto trip) {
-        tripService.createOrUpdateTripForCountry(trip);
-        return "redirect: trip/list-trip";
-    }
-
     @GetMapping("/create")
     public String addNewTripForm(Model model) {
         model.addAttribute("newTrip", new TripDto());
@@ -42,6 +36,14 @@ public class TripController {
         model.addAttribute("hotels", hotelService.getAllHotel());
         return "trip/form-trip";
     }
+
+    @PostMapping("/create/{fromAirportId}/{toAirportId}/{hotelId}")
+    public String addNewTrip(@ModelAttribute("newTrip") TripDto trip) {
+        tripService.createOrUpdateTripForCountry(trip);
+        return "redirect: trip/list-trip";
+    }
+
+
 
 
 

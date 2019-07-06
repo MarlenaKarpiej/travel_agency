@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,26 +13,32 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Create trip form</h2>
+<h3>Create trip form</h3>
 <form:form action="/admin/trip/create" method="POST" modelAttribute="newTrip">
 
-    <%--Fly out airport:--%>
-    <%--<form:select path="airportFlyOut">--%>
-        <%--<form:option value="" label="Please Select"/>--%>
-        <%--<form:options items="${airport.airportName}"/>--%>
-    <%--</form:select>--%>
+    Departure from:
+    <select name="fromAirport">
+        <c:forEach items="${airports}" var="airport">
+            <c:set var="selected" value=""/>
+            <option value="${airport.id}" ${selected}>${airport.airportName}</option>
+        </c:forEach>
+    </select><br/>
 
-    <%--Fly in airport:--%>
-    <%--<form:select path="airportFlyIn">--%>
-        <%--<form:option value="" label="Please Select"/>--%>
-        <%--<form:options items="${airport.airportName}"/>--%>
-    <%--</form:select>--%>
+    Arrival at:
+    <select name="toAirport">
+        <c:forEach items="${airports}" var="airport">
+            <c:set var="selected" value=""/>
+            <option value="${airport.id}" ${selected}>${airport.airportName}</option>
+        </c:forEach>
+    </select><br/>
 
-    <%--Hotel name:--%>
-    <%--<form:select path="hotel">--%>
-        <%--<form:option value="" label="Please Select"/>--%>
-        <%--<form:options items="${airport.airportName}"/>--%>
-    <%--</form:select>--%>
+    Hotel :
+    <select name="hotel">
+        <c:forEach items="${hotels}" var="hotel">
+            <c:set var="selected" value=""/>
+            <option value="${hotel.id}" ${selected}>${hotel.hotelName}</option>
+        </c:forEach>
+    </select><br/>
 
     <%--Departure date:--%>
     <%--<s:form id="form" theme="xhtml">--%>
@@ -45,14 +52,9 @@
         <%--<sj:datepicker value="today" id="date" name="date" displayFormat="dd.mm.yy" label="Today"/>--%>
     <%--</s:form>--%>
 
-    <%--Continent:--%>
-    <%--<form:select path="continent">--%>
-        <%--<form:option value="" label="Please Select"/>--%>
-        <%--<form:options items="${enumValues}"/>--%>
-    <%--</form:select>--%>
-    <%--<br/>--%>
 
-    <%--<input type="submit" value="Create"/>--%>
+
+    <input type="submit" value="Create"/>
 </form:form>
 </body>
 </html>

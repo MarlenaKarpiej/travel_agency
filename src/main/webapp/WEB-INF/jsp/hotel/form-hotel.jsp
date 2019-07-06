@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Create hotel form</h2>
+<h3>Create hotel form</h3>
 <form:form action="/admin/hotel/create/${cityId}" method="POST" modelAttribute="newHotel">
     City name: <c:out value="${cityName}"/><br/>
     Hotel name: <form:input path="hotelName"/> <br />

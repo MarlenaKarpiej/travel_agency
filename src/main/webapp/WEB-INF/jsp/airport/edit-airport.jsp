@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Edit airport form</h2>
+<h3>Edit airport form</h3>
 <form:form action="/admin/airport/edit-airport/${airportId}/${cityId}" method="POST" modelAttribute="airport">
     Airport name: <form:input path="airportName"/> <br />
     <br/>

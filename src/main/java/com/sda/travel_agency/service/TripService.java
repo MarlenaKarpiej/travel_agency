@@ -29,9 +29,12 @@ public class TripService {
         airportFlyBack.ifPresent(newTrip::setToAirport);
         hotel.ifPresent(newTrip::setHotel);
         newTrip.setAdultPrice(tripDto.getAdultPrice());
-        newTrip.
-
-
+        newTrip.setChildPrice(tripDto.getChildPrice());
+        newTrip.setFlyBack(tripDto.getFlyBack());
+        newTrip.setFlyOut(tripDto.getFlyOut());
+        newTrip.setMealsType(tripDto.getMealsType());
+        newTrip.setSeatsNumber(tripDto.getSeatsNumber());
+        newTrip.setPromoted(tripDto.isPromoted());
         tripRepository.save(newTrip);
     }
 

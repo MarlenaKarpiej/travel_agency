@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Create country form</h2>
+<h3>Create country form</h3>
 <form:form action="/admin/country/create" method="POST" modelAttribute="country">
     Country name: <form:input path="countryName"/> <br />
     Continent:

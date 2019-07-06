@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h2>Edit hotel form</h2>
+<h3>Edit hotel form</h3>
 <form:form action="/admin/hotel/edit-hotel/${hotelId}/${cityId}" method="POST" modelAttribute="hotel">
     Hotel name: <form:input path="hotelName"/> <br />
     Star rating: <form:input path="starRating"/> <br />

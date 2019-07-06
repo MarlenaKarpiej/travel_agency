@@ -22,7 +22,7 @@ public class TripPurchase {
     @ManyToOne(fetch = FetchType.LAZY)
     private Trip trip;
 
-    @OneToOne (fetch = FetchType.LAZY)
+    @OneToMany (fetch = FetchType.LAZY)
     private List<TripParticipant> tripParticipantsList;
 
 

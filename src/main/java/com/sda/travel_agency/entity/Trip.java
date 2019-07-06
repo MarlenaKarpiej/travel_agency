@@ -9,6 +9,7 @@ import org.hibernate.annotations.Formula;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -50,4 +51,7 @@ public class Trip {
 
     private int seatsNumber;
 
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<TripPurchase> tripPurchases;
 }

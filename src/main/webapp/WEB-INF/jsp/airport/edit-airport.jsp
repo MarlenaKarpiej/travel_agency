@@ -12,7 +12,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Edit airport form</h2>
-<form:form action="/airport/edit-airport/${airportId}/${cityId}" method="POST" modelAttribute="airport">
+<form:form action="/admin/airport/edit-airport/${airportId}/${cityId}" method="POST" modelAttribute="airport">
     Airport name: <form:input path="airportName"/> <br />
     <br/>
     <form:hidden path="id" />

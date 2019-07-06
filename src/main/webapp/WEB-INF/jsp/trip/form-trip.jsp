@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,12 +40,19 @@
         </c:forEach>
     </select><br/>
 
-    <%--Departure date:--%>
-    <%--<s:form id="form" theme="xhtml">--%>
-        <%--<sj:datepicker id="date0" label="Select a Date"/>--%>
-        <%--<sj:datepicker value="today" id="date" name="date" displayFormat="dd.mm.yy" label="Today"/>--%>
-    <%--</s:form>--%>
+    Price for adult: <form:input path="adultPrice"/> <br />
+    Price for child: <form:input path="childPrice"/> <br />
+    Meals type: <form:input path="mealsType"/> <br />
+    Seats number <form:input path="SeatsNumber"/> <br />
+    Promoted: <form:input path="promoted"/> <br />
 
+    Departure date:
+    <s:form id="form" theme="xhtml">
+        <sj:datepicker id="date0" label="Select a Date"/>
+        <sj:datepicker value="today" id="date" name="date" displayFormat="dd.mm.yy" label="Today"/>
+    </s:form><br />
+
+    <br />
     <%--Arrival date:--%>
     <%--<s:form id="form" theme="xhtml">--%>
         <%--<sj:datepicker id="date0" label="Select a Date"/>--%>

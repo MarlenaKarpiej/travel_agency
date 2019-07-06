@@ -28,13 +28,13 @@ public class CityController {
     private CountryService countryService;
 
     @PostMapping("create/{countryId}")
-    public String addNewCity(@ModelAttribute("newCity")City city, @PathVariable("countryId") Long countryId){
+    public String addNewCity(@ModelAttribute("newCity") City city, @PathVariable("countryId") Long countryId) {
         cityService.createOrUpdateCityForCountry(city, countryId);
         return "redirect:/country/list";
     }
 
     @GetMapping("create/{countryId}")
-    public  String addNewCityForm(Model model, @PathVariable("countryId")Long countryId){
+    public String addNewCityForm(Model model, @PathVariable("countryId") Long countryId) {
         Optional<Country> country = countryService.findCountryById(countryId);
         model.addAttribute("newCity", new City());
         model.addAttribute("countryId", countryId);
@@ -43,16 +43,16 @@ public class CityController {
     }
 
     @GetMapping("/delete-city/{cityId}")
-    public String deleteCity(@PathVariable("cityId") Long id){
+    public String deleteCity(@PathVariable("cityId") Long id) {
         cityService.deleteById(id);
         return "redirect:/country/list";
     }
 
     @GetMapping("/edit-city/{cityId}/{countryId}")
-    public String editCity(@PathVariable("cityId") Long cityId, @PathVariable("countryId") Long countryId, Model model){
-        Optional<City> maybeCity= cityService.findCityById(cityId);
+    public String editCity(@PathVariable("cityId") Long cityId, @PathVariable("countryId") Long countryId, Model model) {
+        Optional<City> maybeCity = cityService.findCityById(cityId);
         Optional<Country> country = countryService.findCountryById(countryId);
-        if(maybeCity.isPresent()) {
+        if (maybeCity.isPresent()) {
             model.addAttribute("city", maybeCity.get());
             model.addAttribute("countryId", countryId);
             model.addAttribute("countryName", country.get().getCountryName());
@@ -62,8 +62,8 @@ public class CityController {
         }
     }
 
-    @PostMapping("/edit-city/{countryId}")
-    public String editCityPost (@ModelAttribute("cityId") City city, @PathVariable("countryId") Long countryId){
+    @PostMapping("/edit-city/{cityId}/{countryId}")
+    public String editCityPost(@ModelAttribute("city") City city, @PathVariable(name = "cityId") Long cityId, @PathVariable("countryId") Long countryId) {
         cityService.createOrUpdateCityForCountry(city, countryId);
         return "redirect:/country/list";
     }

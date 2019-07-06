@@ -15,7 +15,7 @@
 <form:form action="/hotel/create/${cityId}" method="POST" modelAttribute="newHotel">
     City name: <c:out value="${cityName}"/><br/>
     Hotel name: <form:input path="hotelName"/> <br />
-    Property class: <form:input path="propertyClass"/> <br />
+    Star rating: <form:input path="starRating"/> <br />
     Description: <form:input path="description"/> <br />
     <br/>
 

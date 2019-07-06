@@ -58,12 +58,12 @@ public class HotelController {
             model.addAttribute("cityId", cityId);
             return "hotel/edit-hotel";
         } else {
-            return "redirect:/form-hotel";
+            return "redirect:/hotel/form-hotel";
         }
     }
 
-    @PostMapping("/edit-hotel/{cityId}")
-    public String editHotelPost (@ModelAttribute("hotelId") Hotel hotel, @PathVariable("cityId") Long cityId){
+    @PostMapping("/edit-hotel/{hotelId}/{cityId}")
+    public String editHotelPost (@ModelAttribute("hotel") Hotel hotel, @PathVariable("hotelId") Hotel hotelId, @PathVariable("cityId") Long cityId){
         hotelService.createOrUpdateHotelForCity(hotel, cityId);
         return "redirect:/country/list";
     }

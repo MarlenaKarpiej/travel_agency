@@ -20,7 +20,7 @@ public class Hotel {
     private Long id;
 
     private String hotelName;
-    private int propertyClass;
+    private int starRating;
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)

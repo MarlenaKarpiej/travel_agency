@@ -37,7 +37,7 @@
         <c:forEach items="${city.hotels}" var="hotel">
             <c:out value="${hotel.id}"/>
             Hotel name: <c:out value="${hotel.hotelName}"/><br/>
-            Property class: <c:out value="${hotel.propertyClass}"/><br/>
+            Star Rating: <c:out value="${hotel.starRating}"/><br/>
             Description: <c:out value="${hotel.description}"/><br/>
 
             <a href="/hotel/delete-hotel/${hotel.id}">Delete hotel</a>

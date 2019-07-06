@@ -27,4 +27,8 @@ public class Country {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "country")//, cascade = CascadeType.ALL) //jeżeli usuniesz cascade = CascadeType.ALL to usuwanie miast zacznie działać
     private List<City> cities;
 
+    public Country(String countryName, Continent continent) {
+        this.countryName = countryName;
+        this.continent = continent;
+    }
 }

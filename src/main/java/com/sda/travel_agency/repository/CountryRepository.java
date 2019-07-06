@@ -10,7 +10,8 @@ import java.util.Optional;
 
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
-    boolean existsByCountryName(String cn);
+    boolean existsByCountryName(String countryName);
+
     List<Country> findByCountryNameContaining(String countryName);
     Country findByCountryName(String countryName);
 

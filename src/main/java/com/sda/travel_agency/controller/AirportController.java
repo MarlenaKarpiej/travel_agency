@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/airport")
+@RequestMapping("/admin/airport/")
 @Slf4j
 public class AirportController {
 
@@ -25,13 +25,13 @@ public class AirportController {
     @Autowired
     private CityService cityService;
 
-    @PostMapping("create/{cityId}")
+    @PostMapping("/create/{cityId}")
     public String addNewAirport(@ModelAttribute("newAirport") Airport airport, @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
         return "redirect:/country/list";
     }
 
-    @GetMapping("create/{cityId}")
+    @GetMapping("/create/{cityId}")
     public String addNewAirportForm(Model model, @PathVariable("cityId") Long cityId) {
         Optional<City> city = cityService.findCityById(cityId);
         model.addAttribute("newAirport", new Airport());
@@ -46,7 +46,7 @@ public class AirportController {
         return "redirect:/country/list";
     }
 
-    @GetMapping("edit-airport/{airportId}/{cityId}")
+    @GetMapping("/edit-airport/{airportId}/{cityId}")
     public String editAirport(@PathVariable("airportId") Long airportId, @PathVariable("cityId") Long cityId, Model model) {
         Optional<Airport> maybeAirport = airportService.findAirportById(airportId);
 

@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/hotel")
+@RequestMapping("/admin/hotel/")
 @Slf4j
 public class HotelController {
 
@@ -28,13 +28,13 @@ public class HotelController {
     @Autowired
     private CityService cityService;
 
-    @PostMapping("create/{cityId}")
+    @PostMapping("/create/{cityId}")
     public String addNewHotel(@ModelAttribute("newHotel") Hotel hotel, @PathVariable("cityId") Long cityId){
         hotelService.createOrUpdateHotelForCity(hotel, cityId);
         return "redirect:/country/list";
     }
 
-    @GetMapping("create/{cityId}")
+    @GetMapping("/create/{cityId}")
     public  String addNewHotelForm(Model model, @PathVariable("cityId")Long cityId){
         Optional<City> city = cityService.findCityById(cityId);
         model.addAttribute("newHotel", new Hotel());

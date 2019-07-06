@@ -20,18 +20,18 @@
     <c:out value="${country.id}"/>
     <c:out value="${country.countryName}"/>
     <c:out value="${country.continent}"/>
-    <a href="/country/delete/${country.id}">Delete country</a>
-    <a href="/country/edit/${country.id}">Edit country</a>
-    <a href="/city/create/${country.id}">Add city</a><br/><br/>
+    <a href="/admin/country/delete/${country.id}">Delete country</a>
+    <a href="/admin/country/edit/${country.id}">Edit country</a>
+    <a href="/admin/city/create/${country.id}">Add city</a><br/><br/>
 
     <c:forEach items="${country.cities}" var="city">
         <c:out value="${city.id}"/>
         <c:out value="${city.cityName}"/>
 
-        <a href="/city/delete-city/${city.id}">Delete city</a>
-        <a href="/city/edit-city/${city.id}/${country.id}">Edit city</a>
-        <a href="/hotel/create/${city.id}">Add hotel</a>
-        <a href="/airport/create/${city.id}">Add airport</a>
+        <a href="/admin/city/delete-city/${city.id}">Delete city</a>
+        <a href="/admin/city/edit-city/${city.id}/${country.id}">Edit city</a>
+        <a href="/admin/hotel/create/${city.id}">Add hotel</a>
+        <a href="/admin/airport/create/${city.id}">Add airport</a>
         <br/>
 
         <c:forEach items="${city.hotels}" var="hotel">
@@ -40,8 +40,8 @@
             Star Rating: <c:out value="${hotel.starRating}"/><br/>
             Description: <c:out value="${hotel.description}"/><br/>
 
-            <a href="/hotel/delete-hotel/${hotel.id}">Delete hotel</a>
-            <a href="/hotel/edit-hotel/${hotel.id}/${city.id}">Edit hotel</a>
+            <a href="/admin/hotel/delete-hotel/${hotel.id}">Delete hotel</a>
+            <a href="/admin/hotel/edit-hotel/${hotel.id}/${city.id}">Edit hotel</a>
 
             <br/><br/>
         </c:forEach>
@@ -49,8 +49,8 @@
             <c:out value="${airport.id}"/>
             Airport name: <c:out value="${airport.airportName}"/><br/>
 
-            <a href="/airport/delete-airport/${airport.id}">Delete airport</a>
-            <a href="/airport/edit-airport/${airport.id}/${airport.id}">Edit airport</a>
+            <a href="/admin/airport/delete-airport/${airport.id}">Delete airport</a>
+            <a href="/admin/airport/edit-airport/${airport.id}/${airport.id}">Edit airport</a>
 
             <br/><br/>
         </c:forEach>

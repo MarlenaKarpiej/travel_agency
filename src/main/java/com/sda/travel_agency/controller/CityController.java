@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/city")
+@RequestMapping("/admin/city/")
 @Slf4j
 public class CityController {
 
@@ -27,13 +27,13 @@ public class CityController {
     @Autowired
     private CountryService countryService;
 
-    @PostMapping("create/{countryId}")
+    @PostMapping("/create/{countryId}")
     public String addNewCity(@ModelAttribute("newCity") City city, @PathVariable("countryId") Long countryId) {
         cityService.createOrUpdateCityForCountry(city, countryId);
         return "redirect:/country/list";
     }
 
-    @GetMapping("create/{countryId}")
+    @GetMapping("/create/{countryId}")
     public String addNewCityForm(Model model, @PathVariable("countryId") Long countryId) {
         Optional<Country> country = countryService.findCountryById(countryId);
         model.addAttribute("newCity", new City());

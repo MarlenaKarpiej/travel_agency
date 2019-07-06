@@ -48,6 +48,6 @@ public class Trip {
 
     private boolean promoted;
 
-    private int numberOfAdult;
+    private int seatsNumber;
 
 }

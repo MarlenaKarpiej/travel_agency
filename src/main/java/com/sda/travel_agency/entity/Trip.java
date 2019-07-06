@@ -31,7 +31,7 @@ public class Trip {
 
     @OneToOne(fetch = FetchType.LAZY)
     @NotNull
-       private Hotel hotel;
+    private Hotel hotel;
 
     private LocalDate flyOut;
 

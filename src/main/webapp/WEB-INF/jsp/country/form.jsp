@@ -12,7 +12,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create country form</h2>
-<form:form action="/country/create" method="POST" modelAttribute="country">
+<form:form action="/admin/country/create" method="POST" modelAttribute="country">
     Country name: <form:input path="countryName"/> <br />
     Continent:
     <form:select path="continent">

@@ -14,7 +14,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Edit country form</h2>
-<form:form action="/country/edit/${country.id}" method="POST" modelAttribute="country">
+<form:form action="/admin/country/edit/${country.id}" method="POST" modelAttribute="country">
     Country name: <form:input path="countryName"/> <br />
     Continent:
 

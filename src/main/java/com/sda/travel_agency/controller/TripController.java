@@ -1,5 +1,6 @@
 package com.sda.travel_agency.controller;
 
+import com.sda.travel_agency.dto.TripDto;
 import com.sda.travel_agency.entity.*;
 import com.sda.travel_agency.service.AirportService;
 import com.sda.travel_agency.service.HotelService;
@@ -29,29 +30,16 @@ public class TripController {
     private AirportService airportService;
 
     @PostMapping("/create/{fromAirportId}/{toAirportId}/{hotelId}")
-    public String addNewTrip(@ModelAttribute("newTrip") Trip trip,
-                             @PathVariable("fromAirportId") Long fromAirportId,
-                             @PathVariable("toAirportId") Long toAirportId,
-                             @PathVariable("hotelId") Long hotelId) {
-        tripService.createOrUpdateTripForCountry(trip, fromAirportId, toAirportId, hotelId);
+    public String addNewTrip(@ModelAttribute("newTrip") TripDto trip) {
+        tripService.createOrUpdateTripForCountry(trip);
         return "redirect: trip/list-trip";
     }
 
-    @GetMapping("/create/{fromAirport}/{toAirport}/{hotelId}")
-    public String addNewTripForm(Model model,
-                                 @PathVariable("fromAirport") Long fromAirportId,
-                                 @PathVariable("toAirportId") Long toAirportId,
-                                 @PathVariable("hotelId") Long hotelId) {
-        Optional<Airport> fromAirport = airportService.findAirportById(fromAirportId);
-        Optional<Airport> toAirport = airportService.findAirportById(toAirportId);
-        Optional<Hotel> hotel = hotelService.findHotelById(hotelId);
-        model.addAttribute("newTrip", new Trip());
-        model.addAttribute("airportFlyOutId", fromAirportId);
-        model.addAttribute("airportFlyOutName", fromAirport.get().getAirportName());
-        model.addAttribute("airportFlyBackId", toAirportId);
-        model.addAttribute("airportFlyBackName", toAirport.get().getAirportName());
-        model.addAttribute("hotelId", hotelId);
-        model.addAttribute("hotelName", hotel.get().getHotelName());
+    @GetMapping("/create")
+    public String addNewTripForm(Model model) {
+        model.addAttribute("newTrip", new TripDto());
+        model.addAttribute("airports", airportService.getAllAirport());
+        model.addAttribute("hotels", hotelService.getAllHotel());
         return "trip/form-trip";
     }
 

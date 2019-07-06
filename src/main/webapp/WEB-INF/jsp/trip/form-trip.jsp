@@ -13,7 +13,7 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 <h2>Create trip form</h2>
-<form:form action="/admin/trip/create/{airportFlyOutId}/{airportFlyBackId}/{hotelId}" method="POST" modelAttribute="newTrip">
+<form:form action="/admin/trip/create" method="POST" modelAttribute="newTrip">
 
     <%--Fly out airport:--%>
     <%--<form:select path="airportFlyOut">--%>

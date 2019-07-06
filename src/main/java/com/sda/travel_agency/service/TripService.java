@@ -1,5 +1,6 @@
 package com.sda.travel_agency.service;
 
+import com.sda.travel_agency.dto.TripDto;
 import com.sda.travel_agency.entity.Airport;
 import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.entity.Hotel;
@@ -18,14 +19,20 @@ public class TripService {
     private final AirportService airportService;
     private final HotelService hotelService;
 
-    public void createOrUpdateTripForCountry(Trip trip, Long fromAirportId, Long toAirportId, Long hotelId){
-        Optional<Airport> airportFlyOut = airportService.findAirportById(fromAirportId);
-        Optional<Airport> airportFlyBack = airportService.findAirportById(toAirportId);
-        Optional<Hotel> hotel = hotelService.findHotelById(hotelId);
-        airportFlyOut.ifPresent(trip::setFromAirport);
-        airportFlyBack.ifPresent(trip::setToAirport);
-        hotel.ifPresent(trip::setHotel);
-        tripRepository.save(trip);
+    public void createOrUpdateTripForCountry(TripDto tripDto){
+        Optional<Airport> airportFlyOut = airportService.findAirportById(tripDto.getFromAirport());
+        Optional<Airport> airportFlyBack = airportService.findAirportById(tripDto.getToAirport());
+        Optional<Hotel> hotel = hotelService.findHotelById(tripDto.getHotel());
+
+        Trip newTrip = new Trip();
+        airportFlyOut.ifPresent(newTrip::setFromAirport);
+        airportFlyBack.ifPresent(newTrip::setToAirport);
+        hotel.ifPresent(newTrip::setHotel);
+        newTrip.setAdultPrice(tripDto.getAdultPrice());
+        newTrip.
+
+
+        tripRepository.save(newTrip);
     }
 
 

@@ -10,7 +10,7 @@
     <a href="/admin/country/create">Add country</a> |
     <a href="/country/list">Country list</a> |
     <a href="/country/find-by-name">Search country</a> |
-    <a href="/admin/trip/create/{airportFlyOutId}/{airportFlyBackId}/{hotelId}">Add trip</a>
+    <a href="/admin/trip/create">Add trip</a>
 
 
 </fieldset>

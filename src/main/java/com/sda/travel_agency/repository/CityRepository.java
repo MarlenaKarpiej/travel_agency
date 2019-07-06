@@ -8,4 +8,8 @@ import java.util.List;
 public interface CityRepository extends JpaRepository<City, Long> {
 
     List<City> findByCityNameContaining(String cityName);
+    boolean existsByCityName(String cityName);
+
+    City findByCityName(String cityName);
+
 }

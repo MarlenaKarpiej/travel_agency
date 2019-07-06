@@ -26,4 +26,10 @@ public class Hotel {
     @ManyToOne(fetch = FetchType.LAZY)
     private City city;
 
+    public Hotel(String hotelName, int starRating, String description, City city) {
+        this.hotelName = hotelName;
+        this.starRating = starRating;
+        this.description = description;
+        this.city = city;
+    }
 }

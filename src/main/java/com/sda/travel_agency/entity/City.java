@@ -30,4 +30,9 @@ public class City {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
     private List<Airport> airports;
+
+    public City(String cityName, Country country) {
+        this.cityName = cityName;
+        this.country = country;
+    }
 }

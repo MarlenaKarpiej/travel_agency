@@ -22,4 +22,9 @@ public class Airport {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private City city;
+
+    public Airport(String airportName, City city) {
+        this.airportName = airportName;
+        this.city = city;
+    }
 }

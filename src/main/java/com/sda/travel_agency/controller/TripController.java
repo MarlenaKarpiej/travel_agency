@@ -28,28 +28,28 @@ public class TripController {
     @Autowired
     private AirportService airportService;
 
-    @PostMapping("/create/{airportFlyOutId}/{airportFlyBackId}/{hotelId}")
+    @PostMapping("/create/{fromAirportId}/{toAirportId}/{hotelId}")
     public String addNewTrip(@ModelAttribute("newTrip") Trip trip,
-                             @PathVariable("airportFlyOutId") Long airportFlyOutId,
-                             @PathVariable("airportFlyBackId") Long airportFlyBackId,
+                             @PathVariable("fromAirportId") Long fromAirportId,
+                             @PathVariable("toAirportId") Long toAirportId,
                              @PathVariable("hotelId") Long hotelId) {
-        tripService.createOrUpdateTripForCountry(trip, airportFlyOutId, airportFlyBackId, hotelId);
+        tripService.createOrUpdateTripForCountry(trip, fromAirportId, toAirportId, hotelId);
         return "redirect: trip/list-trip";
     }
 
-    @GetMapping("/create/{airportFlyOutId}/{airportFlyBackId}/{hotelId}")
+    @GetMapping("/create/{fromAirport}/{toAirport}/{hotelId}")
     public String addNewTripForm(Model model,
-                                 @PathVariable("airportFlyOutId") Long airportFlyOutId,
-                                 @PathVariable("airportFlyBackId") Long airportFlyBackId,
+                                 @PathVariable("fromAirport") Long fromAirportId,
+                                 @PathVariable("toAirportId") Long toAirportId,
                                  @PathVariable("hotelId") Long hotelId) {
-        Optional<Airport> airportFlyOut = airportService.findAirportById(airportFlyOutId);
-        Optional<Airport> airportFlyBack = airportService.findAirportById(airportFlyBackId);
+        Optional<Airport> fromAirport = airportService.findAirportById(fromAirportId);
+        Optional<Airport> toAirport = airportService.findAirportById(toAirportId);
         Optional<Hotel> hotel = hotelService.findHotelById(hotelId);
         model.addAttribute("newTrip", new Trip());
-        model.addAttribute("airportFlyOutId", airportFlyOutId);
-        model.addAttribute("airportFlyOutName", airportFlyOut.get().getAirportName());
-        model.addAttribute("airportFlyBackId", airportFlyBackId);
-        model.addAttribute("airportFlyBackName", airportFlyBack.get().getAirportName());
+        model.addAttribute("airportFlyOutId", fromAirportId);
+        model.addAttribute("airportFlyOutName", fromAirport.get().getAirportName());
+        model.addAttribute("airportFlyBackId", toAirportId);
+        model.addAttribute("airportFlyBackName", toAirport.get().getAirportName());
         model.addAttribute("hotelId", hotelId);
         model.addAttribute("hotelName", hotel.get().getHotelName());
         return "trip/form-trip";

@@ -18,9 +18,9 @@ public class TripService {
     private final AirportService airportService;
     private final HotelService hotelService;
 
-    public void createOrUpdateTripForCountry(Trip trip, Long airportFlyOutId, Long airportFlyBackId, Long hotelId){
-        Optional<Airport> airportFlyOut = airportService.findAirportById(airportFlyOutId);
-        Optional<Airport> airportFlyBack = airportService.findAirportById(airportFlyBackId);
+    public void createOrUpdateTripForCountry(Trip trip, Long fromAirportId, Long toAirportId, Long hotelId){
+        Optional<Airport> airportFlyOut = airportService.findAirportById(fromAirportId);
+        Optional<Airport> airportFlyBack = airportService.findAirportById(toAirportId);
         Optional<Hotel> hotel = hotelService.findHotelById(hotelId);
         airportFlyOut.ifPresent(trip::setFromAirport);
         airportFlyBack.ifPresent(trip::setToAirport);

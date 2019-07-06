@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-
 public class TripPurchase {
 
     @Id

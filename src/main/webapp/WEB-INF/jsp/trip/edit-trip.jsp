@@ -13,40 +13,39 @@
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
-<h3>Create trip form</h3>
-<form:form action="/admin/trip/create" method="POST" modelAttribute="newTrip">
+<h3>Edit trip form</h3>
+<form:form action="/admin/trip/edit/${tripId}" method="POST" modelAttribute="trip">
 
     Departure from:
     <form:select path="fromAirport">
         <form:options items="${airports}" itemValue="id" itemLabel="airportName"></form:options>
     </form:select><br/>
-    Departure date:<form:input path="flyOut" type="date"/><br/>
+    Departure date:<form:input path="flyOut" value="${flyOut}" type="date" /><br />
     Arrival at:
     <form:select path="toAirport">
         <form:options items="${airports}" itemValue="id" itemLabel="airportName"></form:options>
     </form:select><br/>
-    Arrival date:<form:input path="flyBack" type="date"/><br/>
+    Arrival date:<form:input path="flyBack" value="${flyBack}" type="date" /><br />
     Hotel :
-    <select name="hotel">
-        <c:forEach items="${hotels}" var="hotel">
-            <c:set var="selected" value=""/>
-            <option value="${hotel.id}" ${selected}>${hotel.hotelName}</option>
-        </c:forEach>
-    </select><br/>
-
-    Price for adult: <form:input path="adultPrice"/> <br/>
-    Price for child: <form:input path="childPrice"/> <br/>
+    <form:select path="hotel">
+        <form:options items="${hotels}" itemValue="id" itemLabel="hotelName"></form:options>
+    </form:select><br/>
+    Price for adult: <form:input path="adultPrice"/> <br />
+    Price for child: <form:input path="childPrice"/> <br />
     Meals type:
     <form:select path="mealsType">
         <form:option value="" label="Please Select"/>
         <form:options items="${enumValues}"/>
     </form:select>
     <br/>
-    Seats number: <form:input path="SeatsNumber"/> <br/>
-    Promoted: <form:input path="promoted"/> <br/>
+    Seats number <form:input path="SeatsNumber"/> <br />
+    Promoted: <form:input path="promoted"/> <br />
 
 
-    <input type="submit" value="Create"/>
+
+
+    <%--<form:hidden path="id" />--%>
+    <input type="submit" value="Save"/>
 </form:form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.sda.travel_agency.entity;
 
+import com.sda.travel_agency.model.MealsType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,9 +42,9 @@ public class Trip {
     private LocalDate flyBack;
 
     @Formula("(fly_back - fly_out)")
-    private int numberOfDays;
+    private Integer numberOfDays;
 
-    private String mealsType;
+    private MealsType mealsType;
 
     private float adultPrice;
 

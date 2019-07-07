@@ -3,6 +3,7 @@ package com.sda.travel_agency.dto;
 import com.sda.travel_agency.entity.Airport;
 import com.sda.travel_agency.entity.Hotel;
 import com.sda.travel_agency.entity.TripPurchase;
+import com.sda.travel_agency.model.MealsType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,7 @@ public class TripDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate flyBack;
 
-    private String mealsType;
+    private MealsType mealsType;
     private float adultPrice;
     private float childPrice;
     private boolean promoted;

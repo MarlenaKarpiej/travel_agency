@@ -23,11 +23,11 @@ public class TripController {
     @Autowired
     private final TripService tripService;
 
-    @GetMapping("/list-trip")
+    @GetMapping("/list-trip/offer")
     public String tripList(Model model){
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
-        return "trip/list-trip";
+        return "trip/trip-offer";
     }
 
 }

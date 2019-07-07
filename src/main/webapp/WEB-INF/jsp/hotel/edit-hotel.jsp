@@ -14,7 +14,12 @@
 <h3>Edit hotel form</h3>
 <form:form action="/admin/hotel/edit-hotel/${hotelId}/${cityId}" method="POST" modelAttribute="hotel">
     Hotel name: <form:input path="hotelName"/> <br />
-    Star rating: <form:input path="starRating"/> <br />
+    Star rating:
+    <form:select path="starRating">
+        <form:option value="" label="Please Select"/>
+        <form:options items="${enumValues}"/>
+    </form:select>
+    <br/>
     Description: <form:input path="description"/> <br />
     <br/>
     <form:hidden path="id" />

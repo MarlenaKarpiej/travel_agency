@@ -1,6 +1,7 @@
 package com.sda.travel_agency.entity;
 
 
+import com.sda.travel_agency.model.StarRating;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class Hotel {
     private Long id;
 
     private String hotelName;
-    private int starRating;
+    private StarRating starRating;
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -25,7 +26,7 @@ public class Hotel {
     @ToString.Exclude
     private City city;
 
-    public Hotel(String hotelName, int starRating, String description, City city) {
+    public Hotel(String hotelName, StarRating starRating, String description, City city) {
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.description = description;

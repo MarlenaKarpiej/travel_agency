@@ -1,6 +1,7 @@
 package com.sda.travel_agency.component;
 
 import com.sda.travel_agency.entity.*;
+import com.sda.travel_agency.model.StarRating;
 import com.sda.travel_agency.repository.AirportRepository;
 import com.sda.travel_agency.repository.CityRepository;
 import com.sda.travel_agency.repository.CountryRepository;
@@ -38,8 +39,8 @@ public class InitialDataInitializer implements
 
         addCity("Gdańsk", "Polska");
         addAirport("Walesa", "Gdańsk");
-        addHotel("Mariot", "Gdańsk", 3, "Ładny");
-        addHotel("Cubus", "Gdańsk", 4, "Nie urzeka");
+        addHotel("Mariot", "Gdańsk", StarRating.THREE, "Ładny");
+        addHotel("Cubus", "Gdańsk", StarRating.FOUR, "Nie urzeka");
 
         addCity("Borkowo", "Polska");
         addAirport("AirBorkowo", "Borkowo");
@@ -52,7 +53,7 @@ public class InitialDataInitializer implements
 
         addCity("BugaBuga", "Mozambik");
         addAirport("Buga Airport", "BugaBuga");
-        addHotel("ExHut", "Mozambik", 5, "Luksusowy");
+        addHotel("ExHut", "Mozambik", StarRating.FIVE, "Luksusowy");
 
         addCity("HolaHO", "Mozambik");
         addAirport("Ho Airport", "HolaHO");
@@ -80,7 +81,7 @@ public class InitialDataInitializer implements
         }
     }
 
-    private void addHotel(String hotelName, String cityName, int starRating, String description) {
+    private void addHotel(String hotelName, String cityName, StarRating starRating, String description) {
         if(!hotelRepisitory.existsByHotelName(hotelName) && cityRepository.existsByCityName(cityName)){
             City city = cityRepository.findByCityName(cityName);
             hotelRepisitory.save(new Hotel (hotelName, starRating, description, city));

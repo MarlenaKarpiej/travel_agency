@@ -25,12 +25,6 @@ public class TripPurchase {
     @OneToMany(fetch = FetchType.LAZY)
     private List<TripParticipant> tripParticipantsList;
 
-
     private float price;
 
-
-    public float  calculatePrice(float adultPrice, float childPrice, int adultSeatsBought, int childSeatsBought){
-        price = adultPrice * adultSeatsBought + childPrice * childSeatsBought;
-        return price;
-    }
 }

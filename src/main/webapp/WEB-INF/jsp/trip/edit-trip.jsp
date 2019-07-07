@@ -41,10 +41,6 @@
     Seats number <form:input path="SeatsNumber"/> <br />
     Promoted: <form:input path="promoted"/> <br />
 
-
-
-
-    <%--<form:hidden path="id" />--%>
     <input type="submit" value="Save"/>
 </form:form>
 </body>

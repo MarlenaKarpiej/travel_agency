@@ -6,6 +6,8 @@ import com.sda.travel_agency.repository.TripPurchaseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class TripPurchaseService {
@@ -15,6 +17,12 @@ public class TripPurchaseService {
 
     private void create (TripPurchase tripPurchase){
         tripPurchaseRepository.save(tripPurchase);
+    }
+
+
+    public float  calculatePrice(float adultPrice, float childPrice, int adultSeatsBought, int childSeatsBought){
+        price = adultPrice * adultSeatsBought + childPrice * childSeatsBought;
+        return price;
     }
 
 }

@@ -41,7 +41,7 @@ public class TripService {
 
     public TripDto editTrip(Long id) {
         Optional<Trip> maybeTrip = tripRepository.findById(id);
-        if(maybeTrip.isPresent()){
+        if (maybeTrip.isPresent()) {
             Trip editedTrip = maybeTrip.get();
 
             TripDto tripDto = new TripDto();
@@ -78,4 +78,25 @@ public class TripService {
     }
 
 
+    public void editTrip(Long editedIdentifier, TripDto dto) {
+        Optional<Trip> editedTrip = tripRepository.findById(editedIdentifier);
+        if (editedTrip.isPresent()) {
+            Trip trip = editedTrip.get();
+
+            trip.setSeatsNumber(dto.getSeatsNumber());
+
+            trip.setFromAirport(dto.getFromAirport().getId());
+            trip.setToAirport(dto.getToAirport().getId());
+            trip.setHotel(dto.getHotel().getId());
+            trip.setFlyOut(dto.getFlyOut());
+            trip.setFlyBack(dto.getFlyBack());
+            trip.setMealsType(dto.getMealsType());
+            trip.setAdultPrice(dto.getAdultPrice());
+            trip.setChildPrice(dto.getChildPrice());
+            trip.setPromoted(dto.isPromoted());
+            trip.setSeatsNumber(dto.getSeatsNumber());
+
+            tripRepository.save(trip);
+        }
+    }
 }

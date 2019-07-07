@@ -55,13 +55,14 @@ public class AdminTripController {
         model.addAttribute("trip", tripDto);
         model.addAttribute("airports", airportService.getAllAirport());
         model.addAttribute("hotels", hotelService.getAllHotel());
+        model.addAttribute("editedIdentifier", tripId);
 
         return "trip/edit-trip";
     }
 
     @PostMapping("/edit/{tripId}")
-    public String editTrip(@ModelAttribute("trip") Trip trip) {
-        tripService.editTrip(trip);
+    public String editTrip(@ModelAttribute("trip") TripDto trip, @PathVariable("tripId") Long editedIdentifier) {
+        tripService.editTrip(editedIdentifier, trip);
         return "redirect:/admin/trip/list-trip";
     }
 

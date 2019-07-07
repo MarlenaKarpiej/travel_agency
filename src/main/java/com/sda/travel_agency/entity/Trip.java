@@ -34,11 +34,13 @@ public class Trip {
     @NotNull
     private Hotel hotel;
 
+    @Column(name = "fly_out")
     private LocalDate flyOut;
 
+    @Column(name = "fly_back")
     private LocalDate flyBack;
 
-    @Formula("(flyBack - flyOut)")
+    @Formula("(fly_back - fly_out)")
     private int numberOfDays;
 
     private String mealsType;

@@ -66,7 +66,7 @@ public class InitialDataInitializer implements
     }
 
     private void addCity(String city, String countryName) {
-        if(countryRepository.existsByCountryName(countryName)){
+        if(!cityRepository.existsByCityName(city) && countryRepository.existsByCountryName(countryName)){
             Country country = countryRepository.findByCountryName(countryName);
             cityRepository.save(new City(city, country));
         }
@@ -74,14 +74,14 @@ public class InitialDataInitializer implements
 
 
     private void addAirport(String airportName, String cityName) {
-        if(cityRepository.existsByCityName(cityName)){
+        if(!airportRepository.existsByAirportName(airportName) && cityRepository.existsByCityName(cityName)){
             City city = cityRepository.findByCityName(cityName);
             airportRepository.save(new Airport(airportName, city));
         }
     }
 
     private void addHotel(String hotelName, String cityName, int starRating, String description) {
-        if(cityRepository.existsByCityName(cityName)){
+        if(!hotelRepisitory.existsByHotelName(hotelName) && cityRepository.existsByCityName(cityName)){
             City city = cityRepository.findByCityName(cityName);
             hotelRepisitory.save(new Hotel (hotelName, starRating, description, city));
         }

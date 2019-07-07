@@ -1,9 +1,6 @@
 package com.sda.travel_agency.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,6 +21,8 @@ public class Country {
     @Enumerated(EnumType.STRING)
     private Continent continent;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "country")//, cascade = CascadeType.ALL) //jeżeli usuniesz cascade = CascadeType.ALL to usuwanie miast zacznie działać
     private List<City> cities;
 

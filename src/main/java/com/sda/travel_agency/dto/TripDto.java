@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Formula;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,7 +24,9 @@ public class TripDto {
 
     private Long hotel;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate flyOut;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate flyBack;
 
     private String mealsType;

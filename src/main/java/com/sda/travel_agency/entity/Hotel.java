@@ -1,10 +1,7 @@
 package com.sda.travel_agency.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -24,6 +21,8 @@ public class Hotel {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private City city;
 
     public Hotel(String hotelName, int starRating, String description, City city) {

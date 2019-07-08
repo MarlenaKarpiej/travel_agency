@@ -18,9 +18,9 @@
 </c:if>
 <c:forEach items="${trips}" var="trip">
     <c:out value="${trip.id}"/><br/>
-    Departure from: <c:out value="${trip.fromAirport.getAirportName()}"/><br/>
+    Departure from: <c:out value="${trip.fromAirport.airportName}"/><br/>
     Departure date: <c:out value="${trip.flyOut}"/><br/>
-    Arrival at: <c:out value="${trip.toAirport.getAirportName}"/><br/>
+    Arrival at: <c:out value="${trip.toAirport.airportName}"/><br/>
     Arrival date: <c:out value="${trip.flyBack}"/><br/>
     Hotel: <c:out value="${trip.hotel.hotelName}"/><br/>
     Number of days: <c:out value="${trip.numberOfDays}"/><br/>

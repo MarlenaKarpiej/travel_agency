@@ -83,9 +83,9 @@ public class TripService {
         if (editedTrip.isPresent()) {
             Trip trip = editedTrip.get();
 
-            trip.setSeatsNumber(dto.getSeatsNumber());
+           // trip.setSeatsNumber(dto.getSeatsNumber());
 
-            trip.setFromAirport(dto.getFromAirport().getId());
+            trip.setFromAirport(dto.);
             trip.setToAirport(dto.getToAirport().getId());
             trip.setHotel(dto.getHotel().getId());
             trip.setFlyOut(dto.getFlyOut());

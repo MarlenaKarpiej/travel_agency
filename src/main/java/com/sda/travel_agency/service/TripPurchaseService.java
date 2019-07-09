@@ -19,10 +19,10 @@ public class TripPurchaseService {
         tripPurchaseRepository.save(tripPurchase);
     }
 
-
-    public float  calculatePrice(float adultPrice, float childPrice, int adultSeatsBought, int childSeatsBought){
-        price = adultPrice * adultSeatsBought + childPrice * childSeatsBought;
-        return price;
-    }
+//
+//    public float  calculatePrice(float adultPrice, float childPrice, int adultSeatsBought, int childSeatsBought){
+//        price = adultPrice * adultSeatsBought + childPrice * childSeatsBought;
+//        return price;
+//    }
 
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="templates :: headers"></th:block>
+    <title>Travel agency</title>
+</head>
+<body>
+<div class="container main-window">
+    <form th:action="@{/admin/country/create}" th:method="post" th:object="${country}">
+        <div class="row colored-row">
+            <div class="col-12">
+                <h2>Add Country Page</h2>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="country">Country:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="country" th:field="*{countryName}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="country">Continent:</label>
+            </div>
+            <div class="col-3">
+                <select th:field="*{continent}">
+                    <option th:each="continent : ${continents}"
+                            th:value="${continent}"
+                            th:text="${continent.name()}">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row colored-row">
+            <div class="offset-2 col-8">
+                <input class="form-control" type="submit" value="Add">
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

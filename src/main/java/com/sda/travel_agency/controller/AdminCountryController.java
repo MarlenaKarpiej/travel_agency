@@ -1,5 +1,6 @@
 package com.sda.travel_agency.controller;
 
+import com.sda.travel_agency.entity.Continent;
 import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.service.CountryService;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +22,13 @@ public class AdminCountryController {
     @GetMapping("/create")
     public String createCountryForm(Model model) {
         model.addAttribute("country", new Country());
+        model.addAttribute("continents", Continent.values());
         return "country/form";
     }
 
     @PostMapping("/create")
     public String createCountry(@ModelAttribute("country") Country country) {
         countryService.createCountry(country);
-        log.info("Add new country {}", country);
 
         return "redirect:/country/list";
     }

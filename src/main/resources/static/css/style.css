@@ -1,3 +1,22 @@
 body {
     background-color: #aaaaff;
 }
+.m-table-row:nth-child(odd){
+    background-color: rgba(162, 162, 248, 0.78);
+}
+.m-table-row:nth-child(even){
+    background-color: rgba(243, 241, 242, 0.78);
+}
+.m-table-element{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+.m-table-header{
+    background-color: #9191d9 !important;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 7px !important;
+}

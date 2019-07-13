@@ -39,6 +39,24 @@ public class TripService {
         tripRepository.save(newTrip);
     }
 
+
+
+    public List<Trip> getAllTrip() {
+        return tripRepository.findAll();
+    }
+
+    public void editTrip(Trip trip) {
+        tripRepository.save(trip);
+    }
+
+    public void deleteById(Long tripId) {
+        tripRepository.deleteById(tripId);
+    }
+
+    public Optional<Trip> findTripById(Long tripId) {
+        return tripRepository.findById(tripId);
+    }
+
     public TripDto editTrip(Long id) {
         Optional<Trip> maybeTrip = tripRepository.findById(id);
         if (maybeTrip.isPresent()) {
@@ -61,33 +79,14 @@ public class TripService {
         throw new EntityNotFoundException("ni ma");
     }
 
-    public List<Trip> getAllTrip() {
-        return tripRepository.findAll();
-    }
-
-    public void editTrip(Trip trip) {
-        tripRepository.save(trip);
-    }
-
-    public void deleteById(Long tripId) {
-        tripRepository.deleteById(tripId);
-    }
-
-    public Optional<Trip> findTripById(Long tripId) {
-        return tripRepository.findById(tripId);
-    }
-
-
     public void editTrip(Long editedIdentifier, TripDto dto) {
         Optional<Trip> editedTrip = tripRepository.findById(editedIdentifier);
         if (editedTrip.isPresent()) {
             Trip trip = editedTrip.get();
 
-           // trip.setSeatsNumber(dto.getSeatsNumber());
-
-            trip.setFromAirport(dto.);
-            trip.setToAirport(dto.getToAirport().getId());
-            trip.setHotel(dto.getHotel().getId());
+            trip.setFromAirport(airportService.findAirportById(dto.getFromAirport()).get());
+            trip.setToAirport(airportService.findAirportById(dto.getToAirport()).get());
+            trip.setHotel(hotelService.findHotelById(dto.getHotel()).get());
             trip.setFlyOut(dto.getFlyOut());
             trip.setFlyBack(dto.getFlyBack());
             trip.setMealsType(dto.getMealsType());

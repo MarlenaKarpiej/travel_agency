@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="templates :: headers"></th:block>
+    <title>Travel agency</title>
+</head>
+<body>
+<th:block th:include="templates :: navigator_bar"></th:block>
+<form th:action="@{/country/find-by-name}" th:method="post" th:object="${filterForm}">
+    <div class="container main-window">
+        <div class="row colored-row">
+            <div class="col-12">
+                <h2>Searching Country Page</h2>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-2">
+                <label for="country">Country name:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="country" th:field="*{countryName}" required>
+            </div>
+
+            <div class="row colored-row">
+                <div class="offset-2 col-12">
+                    <input class="form-control" type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

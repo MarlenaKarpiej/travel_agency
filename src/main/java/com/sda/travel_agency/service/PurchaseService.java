@@ -1,22 +1,20 @@
 package com.sda.travel_agency.service;
 
 
-import com.sda.travel_agency.entity.TripPurchase;
-import com.sda.travel_agency.repository.TripPurchaseRepository;
+import com.sda.travel_agency.entity.Purchase;
+import com.sda.travel_agency.repository.PurchaseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
-public class TripPurchaseService {
+public class PurchaseService {
 
-    private final TripPurchaseRepository tripPurchaseRepository;
+    private final PurchaseRepository purchaseRepository;
 
 
-    private void create (TripPurchase tripPurchase){
-        tripPurchaseRepository.save(tripPurchase);
+    private void create (Purchase purchase){
+        purchaseRepository.save(purchase);
     }
 
 //

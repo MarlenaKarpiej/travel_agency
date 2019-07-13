@@ -56,5 +56,5 @@ public class Trip {
 
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<TripPurchase> tripPurchases;
+    private List<Purchase> purchases;
 }

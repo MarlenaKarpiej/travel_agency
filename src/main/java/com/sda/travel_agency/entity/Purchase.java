@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -14,20 +13,18 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class TripParticipant {
+public class Purchase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private TripPurchase tripPurchase;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Trip trip;
 
-    private String name;
-    private String surname;
-    private LocalDate dateOfBirth;
-    private int adultSeatsBought;
-    private int childSeatsBought;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Client> tripParticipantsList;
 
+    private float price;
 
 }

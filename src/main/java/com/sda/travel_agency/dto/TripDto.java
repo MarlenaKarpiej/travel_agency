@@ -1,19 +1,12 @@
 package com.sda.travel_agency.dto;
 
-import com.sda.travel_agency.entity.Airport;
-import com.sda.travel_agency.entity.Hotel;
-import com.sda.travel_agency.entity.TripPurchase;
 import com.sda.travel_agency.model.MealsType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Formula;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @AllArgsConstructor

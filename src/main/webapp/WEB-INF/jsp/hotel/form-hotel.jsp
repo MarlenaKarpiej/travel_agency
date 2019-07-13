@@ -15,7 +15,13 @@
 <form:form action="/admin/hotel/create/${cityId}" method="POST" modelAttribute="newHotel">
     City name: <c:out value="${cityName}"/><br/>
     Hotel name: <form:input path="hotelName"/> <br />
-    Star rating: <form:input path="starRating"/> <br />
+    Star rating:
+    <form:select path="starRating">
+        <form:option value="" label="Please Select"/>
+        <form:options items="${enumValues}"/>
+    </form:select>
+    <br/>
+
     Description: <form:input path="description"/> <br />
     <br/>
 

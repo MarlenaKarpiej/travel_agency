@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin/trip/")
@@ -38,13 +40,13 @@ public class AdminTripController {
     @PostMapping("/create")
     public String addNewTrip(@ModelAttribute("newTrip") TripDto trip) {
         tripService.createOrUpdateTripForCountry(trip);
-        return "redirect:/trip/list-trip";//kieruje na adres url
+        return "redirect:/admin/trip/list-trip";//kieruje na adres url
     }
 
     @GetMapping("/delete/{tripId}")
     public String delete(@PathVariable("tripId") Long tripId) {
         tripService.deleteById(tripId);
-        return "redirect:/trip/list-trip";
+        return "redirect:/admin/trip/list-trip";
     }
 
     @GetMapping("/edit/{tripId}")
@@ -53,13 +55,21 @@ public class AdminTripController {
         model.addAttribute("trip", tripDto);
         model.addAttribute("airports", airportService.getAllAirport());
         model.addAttribute("hotels", hotelService.getAllHotel());
+        model.addAttribute("editedIdentifier", tripId);
 
         return "trip/edit-trip";
     }
 
     @PostMapping("/edit/{tripId}")
-    public String editTrip(@ModelAttribute("trip") Trip trip) {
-        tripService.editTrip(trip);
-        return "redirect:/trip/list-trip";
+    public String editTrip(@ModelAttribute("trip") TripDto trip, @PathVariable("tripId") Long editedIdentifier) {
+        tripService.editTrip(editedIdentifier, trip);
+        return "redirect:/admin/trip/list-trip";
+    }
+
+    @GetMapping("/list-trip")
+    public String tripList(Model model){
+        List<Trip> trips = tripService.getAllTrip();
+        model.addAttribute("trips", trips);
+        return "trip/list-trip";
     }
 }

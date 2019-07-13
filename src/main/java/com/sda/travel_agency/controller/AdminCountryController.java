@@ -45,6 +45,7 @@ public class AdminCountryController {
 
         if(maybeCountry.isPresent()){
             model.addAttribute("country", maybeCountry.get());
+            model.addAttribute("continents", Continent.values());
             return "country/edit-form";
         }else {
             return "redirect:/admin/country/create";

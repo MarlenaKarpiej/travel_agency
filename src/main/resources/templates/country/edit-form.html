@@ -8,7 +8,7 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <form th:action="@{/admin/country/create}" th:method="post" th:object="${country}">
+    <form th:action="@{'/admin/country/edit/'+${country.id}}" th:method="post" th:object="${country}">
         <div class="row colored-row">
             <div class="col-12">
                 <h2>Add Country Page</h2>
@@ -38,7 +38,7 @@
 
         <div class="row colored-row">
             <div class="offset-2 col-8">
-                <input class="form-control" type="submit" value="Add">
+                <input class="form-control" type="submit" value="Save">
             </div>
         </div>
     </form>

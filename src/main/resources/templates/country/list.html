@@ -6,6 +6,7 @@
     <title>Travel agency</title>
 </head>
 <body>
+<th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
     <form th:action="@{/country/list}" th:method="post" th:object="${countries}">
         <div class="row colored-row">
@@ -20,23 +21,20 @@
                     <div class="offset-1 col-2" th:text="'Country name'"></div>
                     <div class="col-2" th:text="'Continent name'"></div>
                     <div class="col-2"></div>
-                    <!--<div class="float-right">-->
+
                     <div class="col-2">Action edit</div>&nbsp;
                     <div class="col-2">Action remove</div>
                 </div>
                 <th:block th:each="country : ${countries}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
-                        <!--<div class="list-group-item d-flex justify-content-between align-items-center">-->
 
                         <div class="offset-1 col-2" th:text="${country.countryName}"></div>
                         <div class="col-2" th:text="${country.continent.getName()}"></div>
                         <div class="col-2"></div>
-                        <!--<div class="float-right">-->
-                        <a class="col-2" th:href="@{'/admin/country/edit'+${country.id}}">Edit</a>
-                        <a class="col-2" th:href="@{'/admin/country/delete/'+${country.id}}">Delete</a>&nbsp;
 
-                        <!--</div>-->
-                        <!--</div>-->
+                        <a class="col-2" th:href="@{'/admin/country/edit/'+${country.id}}">Edit</a>
+                        <a class="col-2" th:href="@{'/admin/country/delete/'+${country.id}}">Delete</a>
+
                     </div>
                 </th:block>
             </div>

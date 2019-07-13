@@ -17,23 +17,26 @@
         <div class="card shadow-sm p-1 bg-white rounded mb-3">
             <div class="list-group list-group-flush">
 
-                <div class="row m-table-header m-table-element p-1 m-table-row mb-3">
+                <div class="row m-table-header m-table-element p-1 m-table-row mb-12">
                     <div class="offset-1 col-2" th:text="'Country name'"></div>
                     <div class="col-2" th:text="'Continent name'"></div>
-                    <div class="col-2"></div>
+                    <div class="col-xs-1"></div>
 
                     <div class="col-2">Action edit</div>&nbsp;
                     <div class="col-2">Action remove</div>
+                    <div class="col-2">Action add city</div>
                 </div>
                 <th:block th:each="country : ${countries}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
 
                         <div class="offset-1 col-2" th:text="${country.countryName}"></div>
                         <div class="col-2" th:text="${country.continent.getName()}"></div>
-                        <div class="col-2"></div>
+                        <div class="col-xs-1"></div>
 
                         <a class="col-2" th:href="@{'/admin/country/edit/'+${country.id}}">Edit</a>
                         <a class="col-2" th:href="@{'/admin/country/delete/'+${country.id}}">Delete</a>
+                        <a class="col-2" th:href="@{'/admin/city/create/'+${country.id}}">Add City</a>
+
 
                     </div>
                 </th:block>

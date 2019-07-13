@@ -22,8 +22,8 @@ public class Purchase {
     @ManyToOne(fetch = FetchType.LAZY)
     private Trip trip;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Client> tripParticipantsList;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private List<Client> tripParticipantsList;
 
     private float price;
 

@@ -56,8 +56,6 @@
         </c:forEach>
     </c:forEach>
 
-
-
     <br/><br/><br/>
 </c:forEach>
 

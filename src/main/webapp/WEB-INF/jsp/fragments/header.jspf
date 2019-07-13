@@ -12,7 +12,8 @@
     <a href="/country/find-by-name">Search country</a> |
     <a href="/admin/trip/create">Add trip</a> |
     <a href="/admin/trip/list-trip">Trip list</a> |
-    <a href="/trip/list-trip/offer">List of offers</a>
+    <a href="/trip/list-trip/offer">List of offers</a> |
+    <a href="/login">Login</a>
 
 </fieldset>
 <br clear="all"/>

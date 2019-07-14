@@ -40,4 +40,6 @@ public class AirportService {
         return airportRepository.findByCity(cityById);
     }
 
+    public List<Airport> findAllAirports() {
+        return airportRepository.findAll();}
 }

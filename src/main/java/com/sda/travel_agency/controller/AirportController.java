@@ -2,7 +2,6 @@ package com.sda.travel_agency.controller;
 
 import com.sda.travel_agency.entity.Airport;
 import com.sda.travel_agency.entity.City;
-import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.service.AirportService;
 import com.sda.travel_agency.service.CityService;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +28,7 @@ public class AirportController {
     @PostMapping("/create/{cityId}")
     public String addNewAirport(@ModelAttribute("newAirport") Airport airport, @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
-        return "redirect:/airport/airport-list";
+        return "redirect:/admin/airport/list";
     }
 
     @GetMapping("/create/{cityId}")
@@ -64,15 +63,13 @@ public class AirportController {
     @PostMapping("/edit-airport/{airportId}/{cityId}")
     public String editAirport(@ModelAttribute("airportId") Airport airport,@PathVariable("airportId")Airport airportId, @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
-        return "redirect:/country/list";
+        return "redirect:/airport/list";
     }
 
-    @GetMapping("/airport-list/{cityId}")
-    public String listHotels(@PathVariable(name = "cityId") Long cityId,
-                             Model model) {
-        model.addAttribute("cityId", cityId);
-        model.addAttribute("airports", airportService.findAirportByCity(cityService.findCityById(cityId).get()));
-        return "hotel/list";
+    @GetMapping("/list")
+    public String listHotels( Model model) {
+        model.addAttribute("airports", airportService.findAllAirports());
+        return "airport/list";
     }
 
 }

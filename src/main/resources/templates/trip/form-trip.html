@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="templates :: headers"></th:block>
+    <title>Travel agency</title>
+</head>
+<body>
+<th:block th:include="templates :: navigator_bar"></th:block>
+<div class="container main-window">
+    <form th:action="@{/admin/trip/create}" th:method="post" th:object="${newTrip}">
+        <div class="row colored-row">
+            <div class="col-12">
+                <h2>Add new trip</h2>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="airports">Departure from:</label>
+            </div>
+            <div class="col-3">
+                <select th:field="*{fromAirport}">
+                    <option th:each="airport : ${airports}"
+                            th:value="${airport}"
+                            th:text="${airport.airportName}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="airports">Departure date:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="flyOut" th:field="*{flyOut}" required>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="airports">Arrival at:</label>
+            </div>
+            <div class="col-3">
+                <select th:field="*{toAirport}">
+                    <option th:each="airport : ${airports}"
+                            th:value="${airport}"
+                            th:text="${airport.airportName}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="airports">Arrival date:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="flyBack" th:field="*{flyBack}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="hotel">Hotel:</label>
+            </div>
+            <div class="col-3">
+                <select th:field="*{hotel}">
+                    <option th:each="hotel : ${hotels}"
+                            th:value="${hotel}"
+                            th:text="${hotel.hotelName}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="trip">Price for adult:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="adultPrice" th:field="*{adultPrice}" required>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="trip">Price for child:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="childPrice" th:field="*{childPrice}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="trip">Meals type:</label>
+            </div>
+            <div class="col-3">
+                <select th:field="*{mealsType}">
+                    <option th:each="mealsType : ${mealsType}"
+                            th:value="${mealsType}"
+                            th:text="${mealsType}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="trip">Seats number:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="seatsNumber" th:field="*{seatsNumber}" required>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="trip">Promoted:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="promoted" th:field="*{promoted}" required>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="offset-2 col-8">
+                <input class="form-control" type="submit" value="Add">
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

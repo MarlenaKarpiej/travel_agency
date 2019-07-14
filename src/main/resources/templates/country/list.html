@@ -44,7 +44,13 @@
                             <div class="col-6">
                                 <a th:text="${city.getCityName()}"></a>
                             </div>
-                            <div class="col-6" th:text="'Inne'"></div>
+                            <div class="col-6">
+                                <a class="col-1" th:href="@{'/admin/city/edit-city/'+${city.id}+'/'+${country.id}}">Edit city</a>
+                                <a class="col-1" th:href="@{'/admin/city/delete-city/'+${city.id}}">Delete city</a>
+                                <a class="col-1" th:href="@{'/admin/hotel/create/'+${city.id}}">Add hotel</a>
+                                <a class="col-1" th:href="@{'/admin/airport/create/'+${city.id}}">Add airport</a>
+                            </div>
+
                         </div>
                     </div>
                 </th:block>

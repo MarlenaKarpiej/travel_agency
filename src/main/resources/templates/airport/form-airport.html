@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="templates :: headers"></th:block>
+    <title>Travel agency</title>
+</head>
+<body>
+<th:block th:include="templates :: navigator_bar"></th:block>
+<div class="container main-window">
+    <form th:action="@{'/admin/airport/create/'+${cityId}}" th:method="post" th:object="${newAirport}">
+        <div class="row colored-row">
+            <div class="col-12">
+                <h2>Add airport</h2>
+            </div>
+        </div>
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="city">City:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="city" th:value="${cityName}" readonly>
+            </div>
+            <div class="col-3">
+                <label for="city">Airport:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="airport" th:field="*{airportName}" required>
+            </div>
+        </div>
+
+
+        <div class="row colored-row">
+            <div class="offset-2 col-8">
+                <input class="form-control" type="submit" value="Add airport">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

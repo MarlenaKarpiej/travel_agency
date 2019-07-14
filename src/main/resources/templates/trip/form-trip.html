@@ -37,10 +37,10 @@
         </div>
         <div class="row colored-row">
             <div class="col-3">
-                <label for="airports">Arrival at:</label>
+                <label for="airportsTo">Arrival at:</label>
             </div>
             <div class="col-3">
-                <select th:field="*{toAirport}">
+                <select id="airportsTo" class="form-control" th:field="*{toAirport}">
                     <option th:each="airport : ${airports}"
                             th:value="${airport}"
                             th:text="${airport.airportName}">
@@ -50,18 +50,18 @@
         </div>
         <div class="row colored-row">
             <div class="col-3">
-                <label for="airports">Arrival date:</label>
+                <label for="arrivalDate">Arrival date:</label>
             </div>
             <div class="col-3">
-                <input class="form-control" id="flyBack" th:field="*{flyBack}" required>
+                <input id="arrivalDate" class="form-control" type="date" th:field="*{flyBack}" required>
             </div>
         </div>
-        <div class="row">
+        <div class="row colored-row">
             <div class="col-3">
                 <label for="hotel">Hotel:</label>
             </div>
             <div class="col-3">
-                <select th:field="*{hotel}">
+                <select id="hotel" class="form-control" th:field="*{hotel}">
                     <option th:each="hotel : ${hotels}"
                             th:value="${hotel}"
                             th:text="${hotel.hotelName}">

@@ -21,7 +21,7 @@
                 <div class="col-2" th:text="'Airport name'"></div>
                 <div class="col-xs-1"></div>
 
-                <div class="col-2">Action edit</div>&nbsp;
+                <div class="col-2">Action edit</div>
                 <div class="col-2">Action remove</div>
             </div>
             <th:block th:each="airport : ${airports}">
@@ -34,14 +34,14 @@
                     <!--<div class="col-2" th:text="${cityName}"></div>-->
                     <div class="col-xs-1"></div>
 
-                    <a class="col-2" th:href="@{'/admin/airport/edit-hotel/'+${airport.id}+'/'+${cityId}}">Edit airport</a>
+                    <a class="col-2" th:href="@{'/admin/airport/edit-hotel/'+${airport.id}+'/'+${airport.city.id}}">Edit airport</a>
                     <a class="col-2" th:href="@{'/admin/airport/delete-hotel/'+${airport.id}}">Delete airport</a>
 
                 </div>
             </th:block>
         </div>
-        <div th:if="${hotels.isEmpty()}">
-            <div class="text-center" th:text="Sorry, no records found"></div>
+        <div th:if="${airports.isEmpty()}">
+            <div class="text-center" th:text="'Sorry, no records found'"></div>
         </div>
     </div>
 </div>

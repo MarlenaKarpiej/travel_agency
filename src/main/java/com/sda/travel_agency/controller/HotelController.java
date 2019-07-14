@@ -3,6 +3,7 @@ package com.sda.travel_agency.controller;
 
 import com.sda.travel_agency.entity.City;
 import com.sda.travel_agency.entity.Hotel;
+import com.sda.travel_agency.model.StarRating;
 import com.sda.travel_agency.service.CityService;
 import com.sda.travel_agency.service.HotelService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ public class HotelController {
         Optional<City> city = cityService.findCityById(cityId);
         model.addAttribute("newHotel", new Hotel());
         model.addAttribute("cityId", cityId);
+        model.addAttribute("starRatings", StarRating.values());
         model.addAttribute("cityName", city.get().getCityName());
         return "hotel/form-hotel";
     }

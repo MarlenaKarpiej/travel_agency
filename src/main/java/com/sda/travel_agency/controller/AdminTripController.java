@@ -3,9 +3,7 @@ package com.sda.travel_agency.controller;
 import com.sda.travel_agency.dto.TripDto;
 import com.sda.travel_agency.entity.Trip;
 import com.sda.travel_agency.model.MealsType;
-import com.sda.travel_agency.service.AirportService;
-import com.sda.travel_agency.service.HotelService;
-import com.sda.travel_agency.service.TripService;
+import com.sda.travel_agency.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,12 @@ public class AdminTripController {
 
     @Autowired
     private AirportService airportService;
+
+    @Autowired
+    private CountryService countryService;
+
+    @Autowired
+    private CityService cityService;
 
     @GetMapping("/create") //adres url
     public String addNewTripForm(Model model) {
@@ -72,6 +76,8 @@ public class AdminTripController {
     public String tripList(Model model){
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
+        model.addAttribute("country", countryService.getAllCountry());
+        model.addAttribute("city", cityService.getAllCity());
         return "trip/list-trip";
     }
 }

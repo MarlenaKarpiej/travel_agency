@@ -52,10 +52,11 @@ public class HotelController {
     @GetMapping("/edit-hotel/{hotelId}/{cityId}")
     public String editHotel(@PathVariable("hotelId") Long hotelId, @PathVariable("cityId") Long cityId, Model model){
         Optional<Hotel> maybeHotel= hotelService.findHotelById(hotelId);
-
+        Optional<City> city = cityService.findCityById(cityId);
         if(maybeHotel.isPresent()) {
             model.addAttribute("hotel", maybeHotel.get());
             model.addAttribute("cityId", cityId);
+            model.addAttribute("cityName", city.get().getCityName());
             return "hotel/edit-hotel";
         } else {
             return "redirect:/hotel/form-hotel";

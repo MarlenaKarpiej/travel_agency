@@ -2,6 +2,7 @@ package com.sda.travel_agency.controller;
 
 import com.sda.travel_agency.entity.Airport;
 import com.sda.travel_agency.entity.City;
+import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.service.AirportService;
 import com.sda.travel_agency.service.CityService;
 import lombok.RequiredArgsConstructor;
@@ -49,10 +50,11 @@ public class AirportController {
     @GetMapping("/edit-airport/{airportId}/{cityId}")
     public String editAirport(@PathVariable("airportId") Long airportId, @PathVariable("cityId") Long cityId, Model model) {
         Optional<Airport> maybeAirport = airportService.findAirportById(airportId);
-
+        Optional<City> city = cityService.findCityById(cityId);
         if (maybeAirport.isPresent()) {
             model.addAttribute("airport", maybeAirport.get());
             model.addAttribute("cityId", cityId);
+            model.addAttribute("cityName", city.get().getCityName());
             return "airport/edit-airport";
         } else {
             return "redirect:/airport/form-airport";

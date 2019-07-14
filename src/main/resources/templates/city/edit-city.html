@@ -8,7 +8,7 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <form th:action="@{/admin/city/create/{countryId}}" th:method="post" th:object="${city}">
+    <form th:action="@{'admin/city/edit-city/'+${city.id}+'/'+${countryId}}" th:method="post" th:object="${city}">
         <div class="row colored-row">
             <div class="col-12">
                 <h2>Edit City</h2>

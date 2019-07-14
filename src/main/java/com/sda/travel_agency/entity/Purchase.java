@@ -19,12 +19,13 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Trip trip;
+    @OneToOne(fetch = FetchType.LAZY)
+    private AppUser appUser;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    private List<Client> tripParticipantsList;
-
+    private int adultSeat;
+    private int childSeats;
     private float price;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Trip trip;
 }

@@ -29,15 +29,23 @@
                 <th:block th:each="country : ${countries}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
 
-                        <div class="offset-1 col-2" th:text="${country.countryName}"></div>
+                        <div class="offset-1 col-2">
+                            <a th:text="${country.countryName}"></a>
+                        </div>
                         <div class="col-2" th:text="${country.continent.getName()}"></div>
                         <div class="col-xs-1"></div>
 
                         <a class="col-2" th:href="@{'/admin/country/edit/'+${country.id}}">Edit</a>
                         <a class="col-2" th:href="@{'/admin/country/delete/'+${country.id}}">Delete</a>
                         <a class="col-2" th:href="@{'/admin/city/create/'+${country.id}}">Add City</a>
-
-
+                    </div>
+                    <div class="row m-table-element p1 m-table-row-subelement-hidden mb-3">
+                        <div class="row col-12 p1 city-row" th:each="city : ${country.getCities()}">
+                            <div class="col-6">
+                                <a th:text="${city.getCityName()}"></a>
+                            </div>
+                            <div class="col-6" th:text="'Inne'"></div>
+                        </div>
                     </div>
                 </th:block>
             </div>

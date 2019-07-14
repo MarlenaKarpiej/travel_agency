@@ -17,9 +17,9 @@ public class PurchaseService {
         purchaseRepository.save(purchase);
     }
 
-//
-//    public float  calculatePrice(float adultPrice, float childPrice, int adultSeatsBought, int childSeatsBought){
-//        price = adultPrice * adultSeatsBought + childPrice * childSeatsBought;
+
+//    public float  calculatePrice(float adultPrice, float childPrice, int adultSeats, int childSeats){
+//        price = adultPrice * adultSeats + childPrice * childSeats;
 //        return price;
 //    }
 

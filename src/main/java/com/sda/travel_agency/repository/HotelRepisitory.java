@@ -1,5 +1,6 @@
 package com.sda.travel_agency.repository;
 
+import com.sda.travel_agency.entity.City;
 import com.sda.travel_agency.entity.Hotel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,6 +10,7 @@ public interface HotelRepisitory extends JpaRepository<Hotel, Long> {
 
     List<Hotel> findByHotelNameContaining(String hotelName);
     boolean existsByHotelName(String name);
+    List<Hotel> findByCity(City city);
 }
 
 

@@ -2,6 +2,7 @@ package com.sda.travel_agency.service;
 
 import com.sda.travel_agency.entity.Airport;
 import com.sda.travel_agency.entity.City;
+import com.sda.travel_agency.entity.Hotel;
 import com.sda.travel_agency.repository.AirportRepository;
 import com.sda.travel_agency.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,8 @@ public class AirportService {
 
     public Optional<Airport> findAirportById (Long airportId) {return airportRepository.findById(airportId);}
 
-
-
+    public List<Airport> findAirportByCity(City cityById) {
+        return airportRepository.findByCity(cityById);
+    }
 
 }

@@ -16,10 +16,10 @@
         </div>
         <div class="row colored-row">
             <div class="col-3">
-                <label for="airports">Departure from:</label>
+                <label for="airportsFrom">Departure from:</label>
             </div>
             <div class="col-3">
-                <select th:field="*{fromAirport}">
+                <select id="airportsFrom" class="form-control" th:field="*{fromAirport}">
                     <option th:each="airport : ${airports}"
                             th:value="${airport}"
                             th:text="${airport.airportName}">
@@ -29,10 +29,10 @@
         </div>
         <div class="row colored-row">
             <div class="col-3">
-                <label for="airports">Departure date:</label>
+                <label for="departureDate">Departure date:</label>
             </div>
             <div class="col-3">
-                <input class="form-control" id="flyOut" th:field="*{flyOut}" required>
+                <input id="departureDate" class="form-control" type="date" th:field="*{flyOut}" required>
             </div>
         </div>
         <div class="row colored-row">
@@ -71,29 +71,29 @@
         </div>
         <div class="row colored-row">
             <div class="col-3">
-                <label for="trip">Price for adult:</label>
+                <label for="adultPrice">Price for adult:</label>
             </div>
             <div class="col-3">
-                <input class="form-control" id="adultPrice" th:field="*{adultPrice}" required>
+                <input id="adultPrice" class="form-control" th:field="*{adultPrice}" required>
             </div>
         </div>
         <div class="row colored-row">
             <div class="col-3">
-                <label for="trip">Price for child:</label>
+                <label for="childPrice">Price for child:</label>
             </div>
             <div class="col-3">
-                <input class="form-control" id="childPrice" th:field="*{childPrice}" required>
+                <input id="childPrice" class="form-control" th:field="*{childPrice}" required>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <label for="trip">Meals type:</label>
+                <label for="mealsType">Meals type:</label>
             </div>
             <div class="col-3">
-                <select th:field="*{mealsType}">
-                    <option th:each="mealsType : ${mealsType}"
-                            th:value="${mealsType}"
-                            th:text="${mealsType}">
+                <select id="mealsType" th:field="*{mealsType}" class="form-control">
+                    <option th:each="type : ${mealsTypes}"
+                            th:value="${type}"
+                            th:text="${type}">
                     </option>
                 </select>
             </div>

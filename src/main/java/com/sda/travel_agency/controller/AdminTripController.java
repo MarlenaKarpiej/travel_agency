@@ -2,6 +2,7 @@ package com.sda.travel_agency.controller;
 
 import com.sda.travel_agency.dto.TripDto;
 import com.sda.travel_agency.entity.Trip;
+import com.sda.travel_agency.model.MealsType;
 import com.sda.travel_agency.service.AirportService;
 import com.sda.travel_agency.service.HotelService;
 import com.sda.travel_agency.service.TripService;
@@ -34,6 +35,7 @@ public class AdminTripController {
         model.addAttribute("newTrip", new TripDto());
         model.addAttribute("airports", airportService.getAllAirport());
         model.addAttribute("hotels", hotelService.getAllHotel());
+        model.addAttribute("mealsTypes", MealsType.values());
         return "trip/form-trip"; //kieruje do adres folderu
     }
 

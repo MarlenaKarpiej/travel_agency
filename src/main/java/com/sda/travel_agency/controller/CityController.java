@@ -58,7 +58,7 @@ public class CityController {
             model.addAttribute("countryName", country.get().getCountryName());
             return "city/edit-city";
         } else {
-            return "redirect:/from-city";
+            return "redirect:/admin/city/create/"+countryId;
         }
     }
 

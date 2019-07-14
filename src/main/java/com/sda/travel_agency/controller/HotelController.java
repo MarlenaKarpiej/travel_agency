@@ -2,10 +2,8 @@ package com.sda.travel_agency.controller;
 
 
 import com.sda.travel_agency.entity.City;
-import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.entity.Hotel;
 import com.sda.travel_agency.service.CityService;
-import com.sda.travel_agency.service.CountryService;
 import com.sda.travel_agency.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,13 +27,13 @@ public class HotelController {
     private CityService cityService;
 
     @PostMapping("/create/{cityId}")
-    public String addNewHotel(@ModelAttribute("newHotel") Hotel hotel, @PathVariable("cityId") Long cityId){
+    public String addNewHotel(@ModelAttribute("newHotel") Hotel hotel, @PathVariable("cityId") Long cityId) {
         hotelService.createOrUpdateHotelForCity(hotel, cityId);
-        return "redirect:/country/list";
+        return "redirect:/admin/hotel/list";
     }
 
     @GetMapping("/create/{cityId}")
-    public  String addNewHotelForm(Model model, @PathVariable("cityId")Long cityId){
+    public String addNewHotelForm(Model model, @PathVariable("cityId") Long cityId) {
         Optional<City> city = cityService.findCityById(cityId);
         model.addAttribute("newHotel", new Hotel());
         model.addAttribute("cityId", cityId);
@@ -44,16 +42,16 @@ public class HotelController {
     }
 
     @GetMapping("/delete-hotel/{hotelId}")
-    public String deleteHotel(@PathVariable("hotelId") Long hotelId){
+    public String deleteHotel(@PathVariable("hotelId") Long hotelId) {
         hotelService.deleteById(hotelId);
         return "redirect:/country/list";
     }
 
     @GetMapping("/edit-hotel/{hotelId}/{cityId}")
-    public String editHotel(@PathVariable("hotelId") Long hotelId, @PathVariable("cityId") Long cityId, Model model){
-        Optional<Hotel> maybeHotel= hotelService.findHotelById(hotelId);
+    public String editHotel(@PathVariable("hotelId") Long hotelId, @PathVariable("cityId") Long cityId, Model model) {
+        Optional<Hotel> maybeHotel = hotelService.findHotelById(hotelId);
         Optional<City> city = cityService.findCityById(cityId);
-        if(maybeHotel.isPresent()) {
+        if (maybeHotel.isPresent()) {
             model.addAttribute("hotel", maybeHotel.get());
             model.addAttribute("cityId", cityId);
             model.addAttribute("cityName", city.get().getCityName());
@@ -64,10 +62,22 @@ public class HotelController {
     }
 
     @PostMapping("/edit-hotel/{hotelId}/{cityId}")
-    public String editHotelPost (@ModelAttribute("hotel") Hotel hotel, @PathVariable("hotelId") Hotel hotelId, @PathVariable("cityId") Long cityId){
+    public String editHotelPost(@ModelAttribute("hotel") Hotel hotel, @PathVariable("hotelId") Hotel hotelId, @PathVariable("cityId") Long cityId) {
         hotelService.createOrUpdateHotelForCity(hotel, cityId);
         return "redirect:/country/list";
     }
 
+    @GetMapping("/list/{cityId}")
+    public String listHotels(@PathVariable(name = "cityId") Long cityId,
+                             Model model) {
+        model.addAttribute("cityId", cityId);
+        model.addAttribute("hotels", hotelService.findHotelByCity(cityService.findCityById(cityId).get()));
+        return "hotel/list";
+    }
 
+    @GetMapping("/list")
+    public String listHotels(Model model) {
+        model.addAttribute("hotels", hotelService.findAllHotels());
+        return "hotel/list";
+    }
 }

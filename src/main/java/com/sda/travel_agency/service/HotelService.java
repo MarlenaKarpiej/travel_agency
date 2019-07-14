@@ -42,5 +42,11 @@ public class HotelService {
         return hotelRepisitory.findById(hotelId);
     }
 
+    public List<Hotel> findHotelByCity(City cityById) {
+        return hotelRepisitory.findByCity(cityById);
+    }
 
+    public List<Hotel> findAllHotels() {
+        return hotelRepisitory.findAll();
+    }
 }

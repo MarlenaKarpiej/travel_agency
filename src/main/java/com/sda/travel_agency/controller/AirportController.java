@@ -29,7 +29,7 @@ public class AirportController {
     @PostMapping("/create/{cityId}")
     public String addNewAirport(@ModelAttribute("newAirport") Airport airport, @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
-        return "redirect:/country/list";
+        return "redirect:/airport/airport-list";
     }
 
     @GetMapping("/create/{cityId}")
@@ -65,6 +65,14 @@ public class AirportController {
     public String editAirport(@ModelAttribute("airportId") Airport airport,@PathVariable("airportId")Airport airportId, @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
         return "redirect:/country/list";
+    }
+
+    @GetMapping("/airport-list/{cityId}")
+    public String listHotels(@PathVariable(name = "cityId") Long cityId,
+                             Model model) {
+        model.addAttribute("cityId", cityId);
+        model.addAttribute("airports", airportService.findAirportByCity(cityService.findCityById(cityId).get()));
+        return "hotel/list";
     }
 
 }

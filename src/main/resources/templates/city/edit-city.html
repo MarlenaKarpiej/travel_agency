@@ -8,7 +8,7 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <form th:action="@{'admin/city/edit-city/'+${city.id}+'/'+${countryId}}" th:method="post" th:object="${city}">
+    <form th:action="@{'/admin/city/edit-city/'+${city.id}+'/'+${countryId}}" th:method="post" th:object="${city}">
         <div class="row colored-row">
             <div class="col-12">
                 <h2>Edit City</h2>
@@ -19,13 +19,13 @@
                 <label for="country">Country:</label>
             </div>
             <div class="col-3">
-                <input class="form-control" id="country" th:text="countryName">
+                <input class="form-control" id="country" th:value="${countryName}" readonly>
             </div>
             <div class="col-3">
                 <label for="country">City:</label>
             </div>
             <div class="col-3">
-                <input class="form-control" id="city" th:field="*{getCityName()}" required>
+                <input class="form-control" id="city" th:field="*{cityName}" required>
             </div>
         </div>
 

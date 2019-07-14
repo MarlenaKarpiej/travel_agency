@@ -136,8 +136,4 @@ public class InitialDataInitializer implements
             userRoleRepository.save(role);
         }
     }
-
-
-
-
 }

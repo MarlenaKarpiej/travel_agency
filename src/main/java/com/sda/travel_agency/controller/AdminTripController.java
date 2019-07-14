@@ -62,7 +62,6 @@ public class AdminTripController {
         model.addAttribute("airports", airportService.getAllAirport());
         model.addAttribute("hotels", hotelService.getAllHotel());
         model.addAttribute("editedIdentifier", tripId);
-
         return "trip/edit-trip";
     }
 

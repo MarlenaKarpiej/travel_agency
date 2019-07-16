@@ -57,4 +57,9 @@ public class Trip {
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Purchase> purchases;
+
+    public Trip(Airport airportFrom, LocalDate flyOut, Airport airportTo, LocalDate flyBack,
+                Hotel hotel, float adultPrice, float childPrice, MealsType mealsType,
+                int seatsNumber, boolean promoted) {
+    }
 }

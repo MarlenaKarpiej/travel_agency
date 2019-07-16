@@ -1,19 +1,19 @@
 package com.sda.travel_agency.component;
 
 import com.sda.travel_agency.entity.*;
+import com.sda.travel_agency.model.MealsType;
 import com.sda.travel_agency.model.StarRating;
 import com.sda.travel_agency.repository.*;
-import com.sda.travel_agency.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class InitialDataInitializer implements
@@ -30,6 +30,9 @@ public class InitialDataInitializer implements
 
     @Autowired
     private HotelRepisitory hotelRepisitory;
+
+    @Autowired
+    private TripRepository tripRepository;
 
     @Autowired
     private UserRoleRepository userRoleRepository;
@@ -61,7 +64,6 @@ public class InitialDataInitializer implements
         addHotel("Metropol ", "Warszawa", StarRating.FOUR, "Urzeka");
 
 
-
         addCity("Włocławek", "Polska");
 
         addCity("Maputo", "Mozambik");
@@ -75,6 +77,8 @@ public class InitialDataInitializer implements
         addCity("HolaHO", "Mozambik");
         addAirport("Ho Airport", "HolaHO");
 
+//        addTrip("pierwsze lotnisko", 2019-07-16, "drugie lotnisko", 2019-07-23,
+//                "nowy", 2500, 1000, MealsType.ALL_INC, 45, true);
 
 
         createRoleIfNotExist("ADMIN");
@@ -85,13 +89,13 @@ public class InitialDataInitializer implements
     }
 
     private void addCountry(String country, Continent continent) {
-        if(!countryRepository.existsByCountryName(country)){
+        if (!countryRepository.existsByCountryName(country)) {
             countryRepository.save(new Country(country, continent));
         }
     }
 
     private void addCity(String city, String countryName) {
-        if(!cityRepository.existsByCityName(city) && countryRepository.existsByCountryName(countryName)){
+        if (!cityRepository.existsByCityName(city) && countryRepository.existsByCountryName(countryName)) {
             Country country = countryRepository.findByCountryName(countryName);
             cityRepository.save(new City(city, country));
         }
@@ -99,19 +103,29 @@ public class InitialDataInitializer implements
 
 
     private void addAirport(String airportName, String cityName) {
-        if(!airportRepository.existsByAirportName(airportName) && cityRepository.existsByCityName(cityName)){
+        if (!airportRepository.existsByAirportName(airportName) && cityRepository.existsByCityName(cityName)) {
             City city = cityRepository.findByCityName(cityName);
             airportRepository.save(new Airport(airportName, city));
         }
     }
 
     private void addHotel(String hotelName, String cityName, StarRating starRating, String description) {
-        if(!hotelRepisitory.existsByHotelName(hotelName) && cityRepository.existsByCityName(cityName)){
+        if (!hotelRepisitory.existsByHotelName(hotelName) && cityRepository.existsByCityName(cityName)) {
             City city = cityRepository.findByCityName(cityName);
-            hotelRepisitory.save(new Hotel (hotelName, starRating, description, city));
+            hotelRepisitory.save(new Hotel(hotelName, starRating, description, city));
         }
     }
 
+//TODO
+    private void addTrip(String fromAirport, LocalDate flyOut, String toAirport, LocalDate flyBack,
+                         String hotelName, float adultPrice, float childPrice, MealsType mealsType, int seatsNumber, boolean promoted) {
+
+        Airport airportFrom = airportRepository.findByAirportName(fromAirport);
+        Airport airportTo = airportRepository.findByAirportName(toAirport);
+        Hotel hotel = hotelRepisitory.findByHotelName(hotelName);
+
+        tripRepository.save(new Trip(airportFrom, flyOut, airportTo, flyBack, hotel, adultPrice, childPrice, mealsType, seatsNumber, promoted));
+    }
 
 
     private void createUserWithRoleIfNotExist(String username, String password, String... roles) {

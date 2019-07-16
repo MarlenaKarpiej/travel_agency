@@ -9,8 +9,10 @@ import java.util.List;
 public interface HotelRepisitory extends JpaRepository<Hotel, Long> {
 
     List<Hotel> findByHotelNameContaining(String hotelName);
-    boolean existsByHotelName(String name);
     List<Hotel> findByCity(City city);
+    boolean existsByHotelName(String name);
+    Hotel findByHotelName(String hotelName);
+
 }
 
 

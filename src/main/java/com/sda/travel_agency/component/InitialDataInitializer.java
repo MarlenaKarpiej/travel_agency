@@ -46,19 +46,26 @@ public class InitialDataInitializer implements
         addCountry("Mozambik", Continent.AFRICA);
         addCountry("Mexico", Continent.NORTH_AMERICA);
         addCountry("Germany", Continent.EUROPE);
+        addCountry("Italy", Continent.EUROPE);
+        addCountry("Spain", Continent.EUROPE);
+        addCountry("Iran", Continent.ASIA);
 
         addCity("Gdańsk", "Polska");
         addAirport("Walesa", "Gdańsk");
         addHotel("Mariot", "Gdańsk", StarRating.THREE, "Ładny");
         addHotel("Cubus", "Gdańsk", StarRating.FOUR, "Nie urzeka");
 
-        addCity("Borkowo", "Polska");
-        addAirport("AirBorkowo", "Borkowo");
+        addCity("Warszawa", "Polska");
+        addAirport("Chopin", "Warszawa");
+        addHotel("Polonia Palace", "Warszawa", StarRating.THREE, "Doskonała lokalizacja");
+        addHotel("Metropol ", "Warszawa", StarRating.FOUR, "Urzeka");
+
+
 
         addCity("Włocławek", "Polska");
 
-        addCity("Ugutulu", "Mozambik");
-        addAirport("UguAirport", "Ugutulu");
+        addCity("Maputo", "Mozambik");
+        addAirport("International Airport", "Maputo");
 
 
         addCity("BugaBuga", "Mozambik");

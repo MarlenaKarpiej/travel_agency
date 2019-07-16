@@ -42,7 +42,6 @@ public class AdminCountryController {
     @GetMapping("/edit/{id}")
     public String editCountryForm(@PathVariable("id") Long id, Model model){
         Optional<Country> maybeCountry = countryService.findCountryById(id);
-
         if(maybeCountry.isPresent()){
             model.addAttribute("country", maybeCountry.get());
             model.addAttribute("continents", Continent.values());

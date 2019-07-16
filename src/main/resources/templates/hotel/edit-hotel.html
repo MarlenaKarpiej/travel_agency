@@ -8,7 +8,7 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <form th:action="@{'/admin/airport/edit/'+${hotel.id}+'/'+${cityId}}" th:method="post" th:object="${hotel}">
+    <form th:action="@{'/admin/hotel/edit-hotel/'+${hotel.id}+'/'+${cityId}}" th:method="post" th:object="${hotel}">
         <div class="row colored-row">
             <div class="col-12">
                 <h2>Edit hotel</h2>
@@ -21,6 +21,8 @@
             <div class="col-3">
                 <input class="form-control" id="city" th:value="${cityName}" readonly>
             </div>
+        </div>
+        <div class="row colored-row">
             <div class="col-3">
                 <label for="city">Hotel:</label>
             </div>
@@ -33,21 +35,74 @@
                 <label for="starRating">Star rating:</label>
             </div>
             <div class="col-3">
-                <select th:field="*{starRating}">
-                    <option th:each="starRating : ${starRating}"
-                            th:value="${starRating}"
-                            th:text="${starRating}">
+                <select id="starRating" th:field="*{starRating}" class="form-control">
+                    <option th:each="rating : ${starRatings}"
+                            th:value="${rating}"
+                            th:text="${rating}">
                     </option>
                 </select>
             </div>
         </div>
-
-
+        <div class="row colored-row">
+            <div class="col-3">
+                <label for="city">Description:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control" id="description" th:field="*{description}" required>
+            </div>
+        </div>
         <div class="row colored-row">
             <div class="offset-2 col-8">
                 <input class="form-control" type="submit" value="Edit hotel">
             </div>
         </div>
+        <!--<div class="row colored-row">-->
+            <!--<div class="col-12">-->
+                <!--<h2>Edit hotel</h2>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row colored-row">-->
+            <!--<div class="col-1">-->
+                <!--<label for="city">City:</label>-->
+            <!--</div>-->
+            <!--<div class="col-3">-->
+                <!--<input class="form-control" id="city" th:value="${cityName}" readonly>-->
+            <!--</div>-->
+            <!--<div class="row colored-row">-->
+                <!--<div class="col-1">-->
+                    <!--<label for="city">Hotel:</label>-->
+                <!--</div>-->
+                <!--<div class="col-3">-->
+                    <!--<input class="form-control" id="hotel" th:field="*{hotelName}" required>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="col-1">-->
+                <!--<label for="starRating">Star rating:</label>-->
+            <!--</div>-->
+            <!--<div class="col-3">-->
+                <!--<select id="starRating" th:field="*{starRating}">-->
+                    <!--<option th:each="starRating : ${starRating}"-->
+                            <!--th:value="${starRating}"-->
+                            <!--th:text="${starRating}">-->
+                    <!--</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-1">-->
+            <!--<label for="city">Description:</label>-->
+        <!--</div>-->
+        <!--<div class="col-3">-->
+            <!--<input class="form-control" id="description" th:field="*{description}" required>-->
+        <!--</div>-->
+
+
+        <!--<div class="row colored-row">-->
+            <!--<div class="offset-2 col-8">-->
+                <!--<input class="form-control" type="submit" value="Edit hotel">-->
+            <!--</div>-->
+        <!--</div>-->
     </form>
 </div>
 </body>

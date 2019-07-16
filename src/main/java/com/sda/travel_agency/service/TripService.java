@@ -20,7 +20,7 @@ public class TripService {
     private final AirportService airportService;
     private final HotelService hotelService;
 
-    public void createOrUpdateTripForCountry(TripDto tripDto) {
+    public void  createOrUpdateTripForCountry(TripDto tripDto) {
         Optional<Airport> airportFlyOut = airportService.findAirportById(tripDto.getFromAirport());
         Optional<Airport> airportFlyBack = airportService.findAirportById(tripDto.getToAirport());
         Optional<Hotel> hotel = hotelService.findHotelById(tripDto.getHotel());

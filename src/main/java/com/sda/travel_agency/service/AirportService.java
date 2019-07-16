@@ -28,7 +28,7 @@ public class AirportService {
 
     public Iterable<Airport> getAllAirport() {return airportRepository.findAll();}
 
-    public List<Airport> findAllByAirportNameConatining(String airportName) {
+    public List<Airport> findAllByAirportNameContaining(String airportName) {
         return airportRepository.findByAirportNameContaining(airportName);
     }
 

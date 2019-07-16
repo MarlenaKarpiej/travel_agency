@@ -8,42 +8,45 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <div class="row colored-row">
-        <div class="col-12">
-            <h2>Airport List</h2>
-        </div>
-    </div>
-    <div class="card shadow-sm p-1 bg-white rounded mb-3">
-        <div class="list-group list-group-flush">
-
-            <div class="row m-table-header m-table-element p-1 m-table-row mb-12">
-                <div class="offset-1 col-2" th:text="'City name'"></div>
-                <div class="col-2" th:text="'Airport name'"></div>
-                <div class="col-xs-1"></div>
-
-                <div class="col-2">Action edit</div>
-                <div class="col-2">Action remove</div>
+    <form th:action="@{'/admin/airport/list/'}" th:method="post" th:object="${airports}">
+        <div class="row colored-row">
+            <div class="col-12">
+                <h2>Airport List</h2>
             </div>
-            <th:block th:each="airport : ${airports}">
-                <div class="row m-table-element p-1 m-table-row mb-3">
-
-                    <div class="offset-1 col-2">
-                        <a th:text="${airport.airportName}"></a>
-                    </div>
-                    <div class="col-2" th:text="${airport.getCity().cityName}"></div>
-                    <!--<div class="col-2" th:text="${cityName}"></div>-->
+        </div>
+        <div class="card shadow-sm p-1 bg-white rounded mb-3">
+            <div class="list-group list-group-flush">
+                <div class="row m-table-header m-table-element p-1 m-table-row mb-12">
+                    <div class="offset-1 col-2" th:text="'City name'"></div>
+                    <div class="col-2" th:text="'Airport name'"></div>
                     <div class="col-xs-1"></div>
 
-                    <a class="col-2" th:href="@{'/admin/airport/edit-hotel/'+${airport.id}+'/'+${airport.city.id}}">Edit airport</a>
-                    <a class="col-2" th:href="@{'/admin/airport/delete-hotel/'+${airport.id}}">Delete airport</a>
-
+                    <div class="col-2">Action edit</div>
+                    <div class="col-2">Action remove</div>
                 </div>
-            </th:block>
+                <th:block th:each="airport : ${airports}">
+                    <div class="row m-table-element p-1 m-table-row mb-3">
+
+                        <div class="offset-1 col-2">
+                            <a th:text="${airport.airportName}"></a>
+                        </div>
+                        <div class="col-2" th:text="${airport.getCity().cityName}"></div>
+                        <!--<div class="col-2" th:text="${cityName}"></div>-->
+                        <div class="col-xs-1"></div>
+
+                        <a class="col-2"
+                           th:href="@{'/admin/airport/edit-airport/'+${airport.id}+'/'+${airport.city.id}}">Edit
+                            airport</a>
+                        <a class="col-2" th:href="@{'/admin/airport/delete-airport/'+${airport.id}}">Delete airport</a>
+
+                    </div>
+                </th:block>
+            </div>
+            <div th:if="${airports.isEmpty()}">
+                <div class="text-center" th:text="'Sorry, no records found'"></div>
+            </div>
         </div>
-        <div th:if="${airports.isEmpty()}">
-            <div class="text-center" th:text="'Sorry, no records found'"></div>
-        </div>
-    </div>
+    </form>
 </div>
 
 </body>

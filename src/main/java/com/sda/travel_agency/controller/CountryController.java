@@ -6,6 +6,8 @@ import com.sda.travel_agency.model.FilterForm;
 import com.sda.travel_agency.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +29,17 @@ public class CountryController {
     }
 
     @GetMapping("/list")
-    public String countryList(Model model){
+    public String countryList(
+//            @RequestParam("page") Integer page,
+//                              @RequestParam("size") Integer size,
+            Model model){
+
+//        Pageable pageable = PageRequest.of(1, 5);
+
         Iterable<Country> countries = countryService.getAllCountry();
+
         model.addAttribute("countries", countries);
+//        countryService.findAllById(pageable).getContent();
         return "country/list";
     }
 

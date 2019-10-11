@@ -38,7 +38,7 @@
                 <select id="starRating" th:field="*{starRating}" class="form-control">
                     <option th:each="rating : ${starRatings}"
                             th:value="${rating}"
-                            th:text="${rating}">
+                            th:text="${rating.getNumber()}">
                     </option>
                 </select>
             </div>

@@ -21,7 +21,7 @@
             <div class="col-3">
                 <select id="airportsFrom" class="form-control" th:field="*{fromAirport}">
                     <option th:each="airport : ${airports}"
-                            th:value="${airport}"
+                            th:value="${airport.getId()}"
                             th:text="${airport.airportName}">
                     </option>
                 </select>
@@ -42,7 +42,7 @@
             <div class="col-3">
                 <select id="airportsTo" class="form-control" th:field="*{toAirport}">
                     <option th:each="airport : ${airports}"
-                            th:value="${airport}"
+                            th:value="${airport.getId()}"
                             th:text="${airport.airportName}">
                     </option>
                 </select>
@@ -63,7 +63,7 @@
             <div class="col-3">
                 <select id="hotel" class="form-control" th:field="*{hotel}">
                     <option th:each="hotel : ${hotels}"
-                            th:value="${hotel}"
+                            th:value="${hotel.getId()}"
                             th:text="${hotel.hotelName}">
                     </option>
                 </select>

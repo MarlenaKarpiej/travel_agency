@@ -61,7 +61,7 @@ public class AirportController {
         }
     }
 
-    @PostMapping("/edit-airport/{cityId}")
+    @PostMapping("/edit-airport/{airportId}/{cityId}")
     public String editAirportPost(@ModelAttribute("airportId") Airport airport, @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
         return "redirect:/admin/airport/list";

@@ -10,6 +10,7 @@ import org.hibernate.annotations.Formula;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Data
@@ -58,8 +59,26 @@ public class Trip {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Purchase> purchases;
 
-    public Trip(Airport airportFrom, LocalDate flyOut, Airport airportTo, LocalDate flyBack,
-                Hotel hotel, float adultPrice, float childPrice, MealsType mealsType,
-                int seatsNumber, boolean promoted) {
+    public Trip(@NotNull Airport fromAirport,
+                @NotNull Airport toAirport,
+                @NotNull Hotel hotel,
+                LocalDate flyOut,
+                LocalDate flyBack,
+                MealsType mealsType,
+                float adultPrice,
+                float childPrice,
+                int seatsNumber,
+                boolean promoted) {
+        this.fromAirport = fromAirport;
+        this.toAirport = toAirport;
+        this.hotel = hotel;
+        this.flyOut = flyOut;
+        this.flyBack = flyBack;
+        this.numberOfDays = Period.between(flyOut, flyOut).getDays();
+        this.mealsType = mealsType;
+        this.adultPrice = adultPrice;
+        this.childPrice = childPrice;
+        this.promoted = promoted;
+        this.seatsNumber = seatsNumber;
     }
 }

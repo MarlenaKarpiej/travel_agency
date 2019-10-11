@@ -8,7 +8,7 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <form th:action="@{/trip/list-trip/offer}" th:method="post" th:object="${trips}">
+    <form th:action="@{/trip/list-trip}" th:method="post" th:object="${trips}">
         <div class="row colored-row">
             <div class="col-12">
                 <h2>Trip List Page</h2>
@@ -19,18 +19,20 @@
                 <div class="row m-table-header m-table-element p-1 m-table-row mb-12">
                     <div class="offset-1 col-2" th:text="'Country name'"></div>
                     <div class="col-3" th:text="'City name'"></div>
-                    <div class="col-3" th:text="'Adult Price'"></div>
-                    <div class="col-3" th:text="'Number of days'"></div>
+                    <div class="col-2" th:text="'Adult Price'"></div>
+                    <div class="col-2" th:text="'Number of days'"></div>
+                    <div class="col-2" ></div>
                 </div>
                 <th:block th:each="trip : ${trips}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
 
                         <div class="offset-1 col-2">
-                            <a th:text="${country}"></a>
+                            <a th:text="${trip.getToAirport().getCity().getCountry().getCountryName()}"></a>
                         </div>
-                        <div class="col-3" th:text="${city}"></div>
-                        <div class="col-3" th:text="${trip.getAdultPrice()}"></div>
-                        <div class="col-3" th:text="${trip.getNumberOfDays()}"></div>
+                        <div class="col-3" th:text="${trip.getToAirport().getCity().getCityName()}"></div>
+                        <div class="col-2" th:text="${trip.getAdultPrice()}"></div>
+                        <div class="col-2" th:text="${trip.getNumberOfDays()}"></div>
+                        <a class="col-2" th:href="@{'/trip/details/'+${trip.id}}">Details</a>
                     </div>
 
 

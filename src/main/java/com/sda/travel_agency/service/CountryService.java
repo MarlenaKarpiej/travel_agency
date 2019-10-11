@@ -3,6 +3,7 @@ package com.sda.travel_agency.service;
 import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.repository.CountryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,6 +38,8 @@ public class CountryService {
     public Optional<Country> findCountryById(Long countryId){
         return countryRepository.findById(countryId);
     }
+
+//    public List<Country> findAllById(Long id){return countryRepository.findAll();}
 
 
 }

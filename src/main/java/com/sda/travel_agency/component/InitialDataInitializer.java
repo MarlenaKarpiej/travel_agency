@@ -45,41 +45,151 @@ public class InitialDataInitializer implements
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        addCountry("Polska", Continent.EUROPE);
-        addCountry("Mozambik", Continent.AFRICA);
-        addCountry("Mexico", Continent.NORTH_AMERICA);
+        addCountry("Poland", Continent.EUROPE);
         addCountry("Germany", Continent.EUROPE);
         addCountry("Italy", Continent.EUROPE);
         addCountry("Spain", Continent.EUROPE);
-        addCountry("Iran", Continent.ASIA);
+        addCountry("Egypt", Continent.AFRICA);
+        addCountry("USA", Continent.NORTH_AMERICA);
+        addCountry("Thailand", Continent.ASIA);
 
-        addCity("Gdańsk", "Polska");
-        addAirport("Walesa", "Gdańsk");
-        addHotel("Mariot", "Gdańsk", StarRating.THREE, "Ładny");
-        addHotel("Cubus", "Gdańsk", StarRating.FOUR, "Nie urzeka");
+        addCity("Warsaw", "Poland");
+        addCity("Krakow", "Poland");
+        addCity("Munich ", "Germany");
+        addCity("Milan", "Italy");
+        addCity("Rome", "Italy");
+        addCity("Barcelona", "Spain");
+        addCity("Hurghada", "Egypt");
+        addCity("New York City","USA");
+        addCity("Bangkok", "Thailand");
 
-        addCity("Warszawa", "Polska");
-        addAirport("Chopin", "Warszawa");
-        addHotel("Polonia Palace", "Warszawa", StarRating.THREE, "Doskonała lokalizacja");
-        addHotel("Metropol ", "Warszawa", StarRating.FOUR, "Urzeka");
+        addAirport("Warsaw Chopin Airport", "Warsaw");
+        addAirport("Kraków John Paul II International Airport", "Krakow");
+        addAirport("Munich International Airport", "Munich");
+        addAirport("Malpensa Airport", "Milan");
+        addAirport("Leonardo da Vinci International Airport", "Rome");
+        addAirport("Barcelona-El Prat Airport", "Barcelona");
+        addAirport("LaGuardia Airport", "New York City");
+        addAirport("John F. Kennedy International Airport", "New York City");
+        addAirport("Don Mueang International Airport", "Bangkok");
+        addAirport("Bangkok International Airport", "Bangkok");
 
+        addHotel("Matylda Old Town Apartment", "Warsaw", StarRating.THREE, "just perfect");
+        addHotel("B&B Hotel", "Krakow", StarRating.FOUR, "friendly staff");
+        addHotel("Grand Hotel", "Milan", StarRating.THREE, "excellent location");
+        addHotel("Barcelona Apartments Plaza", "Barcelona", StarRating.THREE, "great location");
+        addHotel("Moderne Hotel", "New York City", StarRating.FIVE, "great neighbourhood");
+        addHotel("Wild Orchid Villa", "Bangkok", StarRating.FOUR, "very comfortable");
 
-        addCity("Włocławek", "Polska");
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2019, 12, 3),
+                "Kraków John Paul II International Airport",
+                LocalDate.of(2019, 12, 12),
+                "B&B Hotel",
+                2500,
+                1000,
+                MealsType.BB,
+                45,
+                true);
 
-        addCity("Maputo", "Mozambik");
-        addAirport("International Airport", "Maputo");
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2019, 12, 23),
+                "Barcelona-El Prat Airport",
+                LocalDate.of(2019, 12, 30),
+                "Barcelona Apartments Plaza",
+                8500,
+                5000,
+                MealsType.FB,
+                15,
+                true);
 
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2020, 1, 3),
+                "Malpensa Airport",
+                LocalDate.of(2020, 1, 10),
+                "Grand Hotel",
+                3300,
+                1800,
+                MealsType.HB,
+                15,
+                true);
 
-        addCity("BugaBuga", "Mozambik");
-        addAirport("Buga Airport", "BugaBuga");
-        addHotel("ExHut", "Mozambik", StarRating.FIVE, "Luksusowy");
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2020, 7, 12),
+                "Barcelona-El Prat Airport",
+                LocalDate.of(2020, 7, 19),
+                "Barcelona Apartments Plaza",
+                9500,
+                6000,
+                MealsType.ALL_INC,
+                19,
+                true);
 
-        addCity("HolaHO", "Mozambik");
-        addAirport("Ho Airport", "HolaHO");
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2020, 7, 12),
+                "Bangkok International Airport",
+                LocalDate.of(2020, 7, 19),
+                "Wild Orchid Villa",
+                9500,
+                6000,
+                MealsType.ALL_INC,
+                19,
+                true);
 
-//        addTrip("pierwsze lotnisko", 2019-07-16, "drugie lotnisko", 2019-07-23,
-//                "nowy", 2500, 1000, MealsType.ALL_INC, 45, true);
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2019, 12, 3),
+                "Bangkok International Airport",
+                LocalDate.of(2019, 12, 12),
+                "Wild Orchid Villa",
+                2500,
+                1000,
+                MealsType.BB,
+                45,
+                true);
 
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2019, 12, 23),
+                "Barcelona-El Prat Airport",
+                LocalDate.of(2019, 12, 30),
+                "Barcelona Apartments Plaza",
+                8500,
+                5000,
+                MealsType.FB,
+                15,
+                false);
+
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2020, 1, 3),
+                "Malpensa Airport",
+                LocalDate.of(2020, 1, 10),
+                "Grand Hotel",
+                3300,
+                1800,
+                MealsType.HB,
+                15,
+                false);
+
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2020, 7, 12),
+                "Barcelona-El Prat Airport",
+                LocalDate.of(2020, 7, 19),
+                "Barcelona Apartments Plaza",
+                9500,
+                6000,
+                MealsType.ALL_INC,
+                19,
+                false);
+
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2020, 6, 12),
+                "Bangkok International Airport",
+                LocalDate.of(2020, 6, 19),
+                "Wild Orchid Villa",
+                7500,
+                3000,
+                MealsType.ALL_INC,
+                19,
+                true);
 
         createRoleIfNotExist("ADMIN");
         createRoleIfNotExist("USER");
@@ -116,7 +226,6 @@ public class InitialDataInitializer implements
         }
     }
 
-//TODO
     private void addTrip(String fromAirport, LocalDate flyOut, String toAirport, LocalDate flyBack,
                          String hotelName, float adultPrice, float childPrice, MealsType mealsType, int seatsNumber, boolean promoted) {
 
@@ -124,9 +233,9 @@ public class InitialDataInitializer implements
         Airport airportTo = airportRepository.findByAirportName(toAirport);
         Hotel hotel = hotelRepisitory.findByHotelName(hotelName);
 
-        tripRepository.save(new Trip(airportFrom, flyOut, airportTo, flyBack, hotel, adultPrice, childPrice, mealsType, seatsNumber, promoted));
+        Trip trip = new Trip(airportFrom, airportTo, hotel, flyOut, flyBack, mealsType, adultPrice, childPrice, seatsNumber, promoted);
+        tripRepository.save(trip);
     }
-
 
     private void createUserWithRoleIfNotExist(String username, String password, String... roles) {
         if (!appUserRepository.existsByEmail(username)) {

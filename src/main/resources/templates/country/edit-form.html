@@ -30,7 +30,7 @@
                 <select th:field="*{continent}">
                     <option th:each="continent : ${continents}"
                             th:value="${continent}"
-                            th:text="${continent.name()}">
+                            th:text="${continent.getName()}">
                     </option>
                 </select>
             </div>

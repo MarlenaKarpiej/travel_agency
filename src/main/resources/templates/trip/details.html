@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="templates :: headers"></th:block>
+    <title>Travel agency</title>
+</head>
+<body>
+<th:block th:include="templates :: navigator_bar"></th:block>
+<div class="container main-window">
+    <form th:action="@{'/trip/details/'+${trip.id}}" th:method="post" th:object="${trip}">
+        <div class="card shadow-sm p-1 bg-white rounded mb-3">
+            <div class="row colored-row">
+                <div class="col-4" id="countryName"
+                     th:text="${trip.getToAirport().getCity().getCountry().getCountryName()}"></div>
+                <div class="col-4" id="cityName" th:text="${trip.getToAirport().getCity().getCityName()}"></div>
+            </div>
+        </div>
+        <div class="card shadow-sm p-1 bg-white rounded mb-3">
+            <div class="row colored-row">
+                <div class="col-2" for="hotel">Hotel:</div>
+                <div class="col-4" id="hotel" th:text="${trip.getHotel().getHotelName()}"></div>
+            </div>
+        </div>
+
+        <img th:src="@{'/img/'+${trip.getHotel().getCity().getId()}+'.jpg'}" width="50%" height="50%">
+
+        <div class="col-12">
+            <div class="card shadow-sm p-1 bg-white rounded mb-3">
+                <div class="row colored-row">
+                    <div class="col-6" for="airportsTo">Arrival to:</div>
+                    <div class="col-6" id="airportsTo" th:text="${trip.getToAirport().getAirportName()}"></div>
+                </div>
+                <div class="row colored-row">
+                    <div class="col-6" for="departureDate">Departure date:</div>
+                    <div class="col-6" th:text="${trip.getFlyOut()}"></div>
+                </div>
+                <div class="row colored-row">
+                    <div class="col-6" for="arrivalDate">Arrival date:</div>
+                    <div class="col-6" th:text="${trip.getFlyBack()}"></div>
+                </div>
+                <div class="row colored-row">
+                    <div class="col-6" for="adultPrice">Price for adult:</div>
+                    <div class="col-6" id="adultPrice" th:text="${trip.getAdultPrice()}"></div>
+                </div>
+                <div class="row colored-row">
+                    <div class="col-6" for="childPrice">Price for child:</div>
+                    <div class="col-6" id="childPrice" th:text="${trip.getChildPrice()}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-6" for="mealsType">Meals type:</div>
+                    <div class="col-6" div id="mealsType" th:text="${trip.getMealsType().getName()}"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

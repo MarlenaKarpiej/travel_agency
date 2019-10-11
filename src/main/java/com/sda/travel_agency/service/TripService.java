@@ -6,9 +6,11 @@ import com.sda.travel_agency.entity.Hotel;
 import com.sda.travel_agency.entity.Trip;
 import com.sda.travel_agency.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.net.ContentHandler;
 import java.util.List;
 import java.util.Optional;
 
@@ -98,4 +100,8 @@ public class TripService {
             tripRepository.save(trip);
         }
     }
+
+//    public ContentHandler findAll(Pageable pageable) {
+//        return tripRepository.findAll(pageable);
+//    }
 }

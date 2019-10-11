@@ -4,9 +4,13 @@ import com.sda.travel_agency.dto.TripDto;
 import com.sda.travel_agency.entity.Trip;
 import com.sda.travel_agency.model.MealsType;
 import com.sda.travel_agency.service.*;
+import com.sun.xml.internal.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -68,15 +72,17 @@ public class AdminTripController {
     @PostMapping("/edit/{tripId}")
     public String editTrip(@ModelAttribute("trip") TripDto trip, @PathVariable("tripId") Long editedIdentifier) {
         tripService.editTrip(editedIdentifier, trip);
-        return "redirect:/admin/trip/list-trip";
+        return "redirect:/trip/list-trip";
     }
 
-    @GetMapping("/list-trip")
-    public String tripList(Model model){
-        List<Trip> trips = tripService.getAllTrip();
-        model.addAttribute("trips", trips);
-        model.addAttribute("country", countryService.getAllCountry());
-        model.addAttribute("city", cityService.getAllCity());
-        return "trip/list-trip";
-    }
+
+   // TODO
+//
+//    @GetMapping("/sort-and-page")
+//    public List<TripDto> sortAndPage(@RequestParam("page") Integer page,
+//                                          @RequestParam("size") Integer size,
+//                                          @RequestParam("sortOrder") Sort.Direction sortOrder){
+//        Pageable pageable = PageRequest.of(page, size, sortOrder,"id");
+//        return tripService.findAll(pageable).getContent();
+//    }
 }

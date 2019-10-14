@@ -78,7 +78,7 @@ public class InitialDataInitializer implements
         addHotel("B&B Hotel", "Krakow", StarRating.FOUR, "friendly staff");
         addHotel("Grand Hotel", "Milan", StarRating.THREE, "excellent location");
         addHotel("Barcelona Apartments Plaza", "Barcelona", StarRating.THREE, "great location");
-        addHotel("Moderne Hotel", "New York City", StarRating.FIVE, "great neighbourhood");
+        addHotel("Modern Hotel", "New York City", StarRating.FIVE, "great neighbourhood");
         addHotel("Wild Orchid Villa", "Bangkok", StarRating.FOUR, "very comfortable");
 
         addTrip("Warsaw Chopin Airport",
@@ -190,6 +190,52 @@ public class InitialDataInitializer implements
                 MealsType.ALL_INC,
                 19,
                 true);
+
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2020, 7, 12),
+                "John F. Kennedy International Airport",
+                LocalDate.of(2020, 7, 19),
+                "Modern Hotel",
+                7500,
+                5000,
+                MealsType.BB,
+                22,
+                false);
+
+        addTrip("Warsaw Chopin Airport",
+                LocalDate.of(2020, 6, 12),
+                "John F. Kennedy International Airport",
+                LocalDate.of(2020, 6, 19),
+                "Modern Hotel",
+                7200,
+                4800,
+                MealsType.BB,
+                28,
+                true);
+
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2020, 3, 12),
+                "Warsaw Chopin Airport",
+                LocalDate.of(2020, 3, 19),
+                "Matylda Old Town Apartment",
+                3900,
+                2900,
+                MealsType.FB,
+                14,
+                true);
+
+        addTrip("Kraków John Paul II International Airport",
+                LocalDate.of(2020, 3, 8),
+                "Malpensa Airport",
+                LocalDate.of(2020, 3, 15),
+                "Grand Hotel",
+                6900,
+                4800,
+                MealsType.FB,
+                14,
+                true);
+
+
 
         createRoleIfNotExist("ADMIN");
         createRoleIfNotExist("USER");

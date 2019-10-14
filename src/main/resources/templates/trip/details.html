@@ -13,7 +13,8 @@
             <div class="row colored-row">
                 <div class="col-4" id="countryName"
                      th:text="${trip.getToAirport().getCity().getCountry().getCountryName()}"></div>
-                <div class="col-4" id="cityName" th:text="${trip.getToAirport().getCity().getCityName()}"></div>
+                <div class="col-4 font-weight-bold" id="cityName"
+                     th:text="${trip.getToAirport().getCity().getCityName()}"></div>
             </div>
         </div>
         <div class="card shadow-sm p-1 bg-white rounded mb-3">
@@ -23,33 +24,44 @@
             </div>
         </div>
 
-        <img th:src="@{'/img/'+${trip.getHotel().getCity().getId()}+'.jpg'}" width="50%" height="50%">
+        <div class="card shadow-sm p-1 bg-white rounded mb-3">
+            <div class="row colored-row">
+                <div class="col-5">
+                    <img th:src="@{'/img/'+${trip.getHotel().getCity().getId()}+'.jpg'}" width="70%">
+                </div>
+                <div class="col-7">
 
-        <div class="col-12">
-            <div class="card shadow-sm p-1 bg-white rounded mb-3">
-                <div class="row colored-row">
-                    <div class="col-6" for="airportsTo">Arrival to:</div>
-                    <div class="col-6" id="airportsTo" th:text="${trip.getToAirport().getAirportName()}"></div>
-                </div>
-                <div class="row colored-row">
-                    <div class="col-6" for="departureDate">Departure date:</div>
-                    <div class="col-6" th:text="${trip.getFlyOut()}"></div>
-                </div>
-                <div class="row colored-row">
-                    <div class="col-6" for="arrivalDate">Arrival date:</div>
-                    <div class="col-6" th:text="${trip.getFlyBack()}"></div>
-                </div>
-                <div class="row colored-row">
-                    <div class="col-6" for="adultPrice">Price for adult:</div>
-                    <div class="col-6" id="adultPrice" th:text="${trip.getAdultPrice()}"></div>
-                </div>
-                <div class="row colored-row">
-                    <div class="col-6" for="childPrice">Price for child:</div>
-                    <div class="col-6" id="childPrice" th:text="${trip.getChildPrice()}"></div>
-                </div>
-                <div class="row">
-                    <div class="col-6" for="mealsType">Meals type:</div>
-                    <div class="col-6" div id="mealsType" th:text="${trip.getMealsType().getName()}"></div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="airportsTo">Arrival to:</div>
+                        <div class="col-4" id="airportsTo" th:text="${trip.getToAirport().getAirportName()}"></div>
+                    </div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="airportsFrom">Departure from:</div>
+                        <div class="col-4" id="airportsFrom" th:text="${trip.getFromAirport().getAirportName()}"></div>
+                    </div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="departureDate">Arrival date:</div>
+                        <div class="col-4" th:text="${trip.getFlyOut()}"></div>
+                    </div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="arrivalDate">Departure date:</div>
+                        <div class="col-4" th:text="${trip.getFlyBack()}"></div>
+                    </div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="adultPrice">Price for adult:</div>
+                        <div class="col-4" id="adultPrice" th:text="${trip.getAdultPrice()}"></div>
+                    </div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="childPrice">Price for child:</div>
+                        <div class="col-4" id="childPrice" th:text="${trip.getChildPrice()}"></div>
+                    </div>
+                    <div class="row colored-row">
+                        <div class="col-3" for="mealsType">Meals type:</div>
+                        <div class="col-4" div id="mealsType" th:text="${trip.getMealsType().getName()}"></div>
+                    </div>
+                    <img id="photo" th:src="'data:image/png;base64,'+${base64Data}"/>
+                    <!--<button class="btn btn-outline-primary" th:action="" th:text="Buy now"></button>-->
+
                 </div>
             </div>
         </div>

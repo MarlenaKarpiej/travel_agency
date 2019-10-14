@@ -35,13 +35,15 @@
                 </option>
             </select>
 
-            <select class="p-2 text-dark" onchange="location=this.value">
-                <option value="nothing" selected="selected">Hotel</option>
-                <option class="p-2 text-dark" value="/hotel/list">Hotel list
-                </option>
-                <option class="p-2 text-dark" sec:authorize="hasRole('ADMIN')" value="/admin/hotel/list">Editable hotel list
-                </option>
-            </select>
+            <!--<select class="p-2 text-dark" onchange="location=this.value">-->
+                <!--<option value="nothing" selected="selected">Hotel</option>-->
+                <!--<option class="p-2 text-dark" value="/hotel/list">Hotel list-->
+                <!--</option>-->
+                <!--<option class="p-2 text-dark" sec:authorize="hasRole('ADMIN')" value="/admin/hotel/list">Editable hotel list-->
+                <!--</option>-->
+            <!--</select>-->
+
+            <a class="p-2 text-dark" th:href="@{/hotel/list}">Hotel list</a>
 
             <!--<a class="p-2 text-dark" th:href="@{/country/list}">Country list</a>-->
             <!--<a class="p-2 text-dark" th:href="@{/country/find-by-name}">Find country by name</a>-->

@@ -56,6 +56,10 @@ public class Trip {
     private int seatsNumber;
 
 
+    @Lob
+    @Column(nullable = true)
+    private byte[] data;
+
     @OneToMany(fetch = FetchType.LAZY)
     private List<Purchase> purchases;
 

@@ -27,7 +27,7 @@
                 <label for="country">Continent:</label>
             </div>
             <div class="col-3">
-                <select th:field="*{continent}">
+                <select class="form-control" th:field="*{continent}">
                     <option th:each="continent : ${continents}"
                             th:value="${continent}"
                             th:text="${continent.getName()}">

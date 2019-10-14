@@ -46,7 +46,7 @@ public class AdminHotelController {
     @GetMapping("/delete-hotel/{hotelId}")
     public String deleteHotel(@PathVariable("hotelId") Long hotelId) {
         hotelService.deleteById(hotelId);
-        return "redirect:/hotel/list";
+        return "redirect:/admin/hotel/list";
     }
 
     @GetMapping("/edit-hotel/{hotelId}/{cityId}")
@@ -60,14 +60,14 @@ public class AdminHotelController {
             model.addAttribute("starRatings", StarRating.values());
             return "hotel/edit-hotel";
         } else {
-            return "redirect:admin/hotel/form-hotel";
+            return "redirect:/hotel/form-hotel";
         }
     }
 
     @PostMapping("/edit-hotel/{hotelId}/{cityId}")
     public String editHotelPost(@ModelAttribute("hotelId") Hotel hotel, @PathVariable("cityId") Long cityId) {
         hotelService.createOrUpdateHotelForCity(hotel, cityId);
-        return "redirect:/hotel/list";
+        return "redirect:/admin/hotel/list";
     }
 
     @GetMapping("/list/{cityId}")

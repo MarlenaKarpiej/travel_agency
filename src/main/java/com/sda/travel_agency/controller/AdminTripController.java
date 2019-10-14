@@ -14,7 +14,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -48,8 +50,12 @@ public class AdminTripController {
     }
 
     @PostMapping("/create")
-    public String addNewTrip(@ModelAttribute("newTrip") TripDto trip) {
-        tripService.createOrUpdateTripForCountry(trip);
+    public String addNewTrip(@ModelAttribute("newTrip") TripDto trip, @RequestParam("file") MultipartFile file) {
+        try {
+            tripService.createOrUpdateTripForCountry(trip, file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/admin/trip/list-trip";//kieruje na adres url
     }
 

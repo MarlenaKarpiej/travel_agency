@@ -6,10 +6,13 @@ import com.sda.travel_agency.entity.Hotel;
 import com.sda.travel_agency.entity.Trip;
 import com.sda.travel_agency.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
+import java.io.IOException;
 import java.net.ContentHandler;
 import java.util.List;
 import java.util.Optional;
@@ -22,12 +25,15 @@ public class TripService {
     private final AirportService airportService;
     private final HotelService hotelService;
 
-    public void  createOrUpdateTripForCountry(TripDto tripDto) {
+    public void  createOrUpdateTripForCountry(TripDto tripDto, MultipartFile file) throws IOException {
         Optional<Airport> airportFlyOut = airportService.findAirportById(tripDto.getFromAirport());
         Optional<Airport> airportFlyBack = airportService.findAirportById(tripDto.getToAirport());
         Optional<Hotel> hotel = hotelService.findHotelById(tripDto.getHotel());
 
+        byte[] bytes = file.getBytes();
+
         Trip newTrip = new Trip();
+        newTrip.setData(bytes);
         airportFlyOut.ifPresent(newTrip::setFromAirport);
         airportFlyBack.ifPresent(newTrip::setToAirport);
         hotel.ifPresent(newTrip::setHotel);
@@ -43,8 +49,8 @@ public class TripService {
 
 
 
-    public List<Trip> getAllTrip() {
-        return tripRepository.findAll();
+    public Page<Trip> getAllTrip(Pageable pageable) {
+        return tripRepository.findAll(pageable);
     }
 
     public void editTrip(Trip trip) {

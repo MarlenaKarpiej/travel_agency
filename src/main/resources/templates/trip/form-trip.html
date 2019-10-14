@@ -8,7 +8,7 @@
 <body>
 <th:block th:include="templates :: navigator_bar"></th:block>
 <div class="container main-window">
-    <form th:action="@{/admin/trip/create}" th:method="post" th:object="${newTrip}">
+    <form th:action="@{/admin/trip/create}" th:method="post" th:object="${newTrip}" enctype="multipart/form-data">
         <div class="row colored-row">
             <div class="col-12">
                 <h2>Add new trip</h2>
@@ -114,6 +114,7 @@
                 <input class="form-control" id="promoted" th:field="*{promoted}" required>
             </div>
         </div>
+        <input type="file" name="file" /><br/><br/>
         <div class="row colored-row">
             <div class="offset-2 col-8">
                 <input class="form-control" type="submit" value="Add trip">

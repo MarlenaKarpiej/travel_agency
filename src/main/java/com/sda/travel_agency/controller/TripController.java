@@ -1,23 +1,23 @@
 package com.sda.travel_agency.controller;
 
-
-import com.sda.travel_agency.dto.TripDto;
-import com.sda.travel_agency.entity.Airport;
-import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.entity.Trip;
 import com.sda.travel_agency.model.MealsType;
+import com.sda.travel_agency.repository.TripRepository;
 import com.sda.travel_agency.service.*;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -41,17 +41,20 @@ public class TripController {
     @Autowired
     private CityService cityService;
 
-//    @GetMapping("/list-trip/offer")
-//    public String tripList(Model model){
-//        List<Trip> trips = tripService.getAllTrip();
-//        model.addAttribute("trips", trips);
-//        return "trip/trip-offer";
-//    }
+    @Autowired
+    private TripRepository tripRepository;
 
+
+    //    @GetMapping("/list-trip/page/size")
     @GetMapping("/list-trip")
-    public String tripList(Model model){
-        List<Trip> trips = tripService.getAllTrip();
+    public String tripList(Model model,
+                           @RequestParam(value = "page", defaultValue = "0") Integer page,
+                           @RequestParam(value = "size", defaultValue = "5") Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Trip> trips = tripService.getAllTrip(pageable);
         model.addAttribute("trips", trips);
+        model.addAttribute("size", size);
         model.addAttribute("country", countryService.getAllCountry());
         model.addAttribute("city", cityService.getAllCity());
         return "trip/list-trip";
@@ -61,6 +64,9 @@ public class TripController {
     public String trpDetails(Model model, @PathVariable("tripId") Long tripId) {
         Optional<Trip> maybeTrip = tripService.findTripById(tripId);
         if (maybeTrip.isPresent()) {
+            if (maybeTrip.get().getData() != null) {
+                model.addAttribute("base64Data", new String(Base64.encode(maybeTrip.get().getData())));
+            }
             model.addAttribute("trip", maybeTrip.get());
             model.addAttribute("airports", airportService.getAllAirport());
             model.addAttribute("hotels", hotelService.getAllHotel());
@@ -71,7 +77,6 @@ public class TripController {
         }
         return "trip/trip-offer";
     }
-    
 
 
 }

@@ -17,7 +17,7 @@
         <div class="card shadow-sm p-1 bg-white rounded mb-3">
             <div class="list-group list-group-flush">
                 <div class="row m-table-header m-table-element p-1 m-table-row mb-12">
-                    <div class="offset-1 col-2" th:text="'Airport name'"></div>
+                    <div class="offset-1 col-4" th:text="'Airport name'"></div>
                     <div class="col-2" th:text="'City name'"></div>
                     <div class="col-xs-1"></div>
 
@@ -27,7 +27,7 @@
                 <th:block th:each="airport : ${airports}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
 
-                        <div class="offset-1 col-2">
+                        <div class="offset-1 col-4">
                             <a th:text="${airport.airportName}"></a>
                         </div>
                         <div class="col-2" th:text="${airport.getCity().cityName}"></div>

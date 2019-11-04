@@ -45,13 +45,11 @@ public class TripController {
     private TripRepository tripRepository;
 
 
-    //    @GetMapping("/list-trip/page/size")
     @GetMapping("/list-trip")
     public String tripList(Model model,
                            @RequestParam(value = "page", defaultValue = "0") Integer page,
                            @RequestParam(value = "size", defaultValue = "5") Integer size) {
         Pageable pageable = PageRequest.of(page, size);
-
         Page<Trip> trips = tripService.getAllTrip(pageable);
         model.addAttribute("trips", trips);
         model.addAttribute("size", size);
@@ -64,7 +62,7 @@ public class TripController {
     public String trpDetails(Model model, @PathVariable("tripId") Long tripId) {
         Optional<Trip> maybeTrip = tripService.findTripById(tripId);
         if (maybeTrip.isPresent()) {
-            if (maybeTrip.get().getData() != null) {
+            if (maybeTrip.get().getData() != null && maybeTrip.get().getData().length > 0) {/*to jest odpowiedzialne za dodanie zdjęcia*/
                 model.addAttribute("base64Data", new String(Base64.encode(maybeTrip.get().getData())));
             }
             model.addAttribute("trip", maybeTrip.get());

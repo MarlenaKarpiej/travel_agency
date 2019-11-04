@@ -87,10 +87,15 @@ public class TripService {
         throw new EntityNotFoundException("ni ma");
     }
 
-    public void editTrip(Long editedIdentifier, TripDto dto) {
+    public void editTrip(Long editedIdentifier, TripDto dto,MultipartFile file) throws IOException {
         Optional<Trip> editedTrip = tripRepository.findById(editedIdentifier);
         if (editedTrip.isPresent()) {
             Trip trip = editedTrip.get();
+
+            byte[] bytes = file.getBytes();
+
+            Trip newTrip = new Trip();
+            newTrip.setData(bytes);
 
             trip.setFromAirport(airportService.findAirportById(dto.getFromAirport()).get());
             trip.setToAirport(airportService.findAirportById(dto.getToAirport()).get());
@@ -107,7 +112,4 @@ public class TripService {
         }
     }
 
-//    public ContentHandler findAll(Pageable pageable) {
-//        return tripRepository.findAll(pageable);
-//    }
 }

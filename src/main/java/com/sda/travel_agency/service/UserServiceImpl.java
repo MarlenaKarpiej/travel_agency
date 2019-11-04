@@ -1,6 +1,7 @@
 package com.sda.travel_agency.service;
 
 import com.sda.travel_agency.entity.AppUser;
+import com.sda.travel_agency.entity.Cart;
 import com.sda.travel_agency.exception.PasswordDoNotMatchException;
 import com.sda.travel_agency.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService {
         AppUser appUser = new AppUser();
         appUser.setEmail(username);
         appUser.setPassword(passwordEncoder.encode(password));
+        appUser.setCart(new Cart());
 
         // pobranie domyślnych uprawnień z userRoleService (który ładuje z konfiguracji)
         appUser.setRoles(userRoleService.getDefaultUserRoles());

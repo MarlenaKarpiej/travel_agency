@@ -46,11 +46,13 @@ public class AdminHotelController {
     @GetMapping("/delete-hotel/{hotelId}")
     public String deleteHotel(@PathVariable("hotelId") Long hotelId) {
         hotelService.deleteById(hotelId);
-        return "redirect:/admin/hotel/list";
+        return "redirect:/hotel/list";
     }
 
     @GetMapping("/edit-hotel/{hotelId}/{cityId}")
-    public String editHotel(@PathVariable("hotelId") Long hotelId, @PathVariable("cityId") Long cityId, Model model) {
+    public String editHotel(@PathVariable("hotelId") Long hotelId,
+                            @PathVariable("cityId") Long cityId,
+                            Model model) {
         Optional<Hotel> maybeHotel = hotelService.findHotelById(hotelId);
         Optional<City> city = cityService.findCityById(cityId);
         if (maybeHotel.isPresent()) {
@@ -65,22 +67,17 @@ public class AdminHotelController {
     }
 
     @PostMapping("/edit-hotel/{hotelId}/{cityId}")
-    public String editHotelPost(@ModelAttribute("hotelId") Hotel hotel, @PathVariable("cityId") Long cityId) {
+    public String editHotelPost(@ModelAttribute("hotelId") Hotel hotel,
+                                @PathVariable("cityId") Long cityId) {
         hotelService.createOrUpdateHotelForCity(hotel, cityId);
-        return "redirect:/admin/hotel/list";
+        return "redirect:/hotel/list";
     }
 
-    @GetMapping("/list/{cityId}")
-    public String listHotels(@PathVariable(name = "cityId") Long cityId,
-                             Model model) {
-        model.addAttribute("cityId", cityId);
-        model.addAttribute("hotels", hotelService.findHotelByCity(cityService.findCityById(cityId).get()));
-        return "hotel/list";
-    }
-
-    @GetMapping("/list")
-    public String listHotels(Model model) {
-        model.addAttribute("hotels", hotelService.findAllHotels());
-        return "hotel/list-hotel-admin";
-    }
+//    @GetMapping("/list/{cityId}")
+//    public String listHotels(@PathVariable(name = "cityId") Long cityId,
+//                             Model model) {
+//        model.addAttribute("cityId", cityId);
+//        model.addAttribute("hotels", hotelService.findHotelByCity(cityService.findCityById(cityId).get()));
+//        return "hotel/list";
+//    }
 }

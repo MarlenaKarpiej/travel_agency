@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <th:block th:include="templates :: headers"></th:block>
@@ -21,8 +21,8 @@
                     <div class="col-2" th:text="'City name'"></div>
                     <div class="col-xs-1"></div>
 
-                    <div class="col-2">Action edit</div>
-                    <div class="col-2">Action remove</div>
+                    <!--<div class="col-2">Action edit</div>-->
+                    <!--<div class="col-2">Action remove</div>-->
                 </div>
                 <th:block th:each="airport : ${airports}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
@@ -34,10 +34,11 @@
                         <!--<div class="col-2" th:text="${cityName}"></div>-->
                         <div class="col-xs-1"></div>
 
-                        <a class="col-2"
+                        <a class="col-2" sec:authorize="hasRole('ADMIN')"
                            th:href="@{'/admin/airport/edit-airport/'+${airport.id}+'/'+${airport.city.id}}">Edit
                             airport</a>
-                        <a class="col-2" th:href="@{'/admin/airport/delete-airport/'+${airport.id}}">Delete airport</a>
+                        <a class="col-2" sec:authorize="hasRole('ADMIN')"
+                           th:href="@{'/admin/airport/delete-airport/'+${airport.id}}">Delete airport</a>
 
                     </div>
                 </th:block>

@@ -30,16 +30,9 @@ public class CountryController {
 
     @GetMapping("/list")
     public String countryList(
-//            @RequestParam("page") Integer page,
-//                              @RequestParam("size") Integer size,
             Model model){
-
-//        Pageable pageable = PageRequest.of(1, 5);
-
         Iterable<Country> countries = countryService.getAllCountry();
-
         model.addAttribute("countries", countries);
-//        countryService.findAllById(pageable).getContent();
         return "country/list";
     }
 

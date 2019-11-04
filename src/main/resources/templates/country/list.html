@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <th:block th:include="templates :: headers"></th:block>
@@ -22,9 +22,9 @@
                     <div class="col-2" th:text="'Continent name'"></div>
                     <div class="col-xs-1"></div>
 
-                    <div class="col-2">Action edit</div>&nbsp;
-                    <div class="col-2">Action remove</div>
-                    <div class="col-2">Action add city</div>
+                    <!--<div class="col-2">Action edit</div>&nbsp;-->
+                    <!--<div class="col-2">Action remove</div>-->
+                    <!--<div class="col-2">Action add city</div>-->
                 </div>
                 <th:block th:each="country : ${countries}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
@@ -35,22 +35,34 @@
                         <div class="col-2" th:text="${country.continent.getName()}"></div>
                         <div class="col-xs-1"></div>
 
-                        <a class="col-2" th:href="@{'/admin/country/edit/'+${country.id}}">Edit</a>
-                        <a class="col-2" th:href="@{'/admin/country/delete/'+${country.id}}">Delete</a>
-                        <a class="col-2" th:href="@{'/admin/city/create/'+${country.id}}">Add City</a>
+                        <a class="col-2" sec:authorize="hasRole('ADMIN')"
+                           th:href="@{'/admin/country/edit/'+${country.id}}">Edit</a>
+                        <a class="col-2" sec:authorize="hasRole('ADMIN')"
+                           th:href="@{'/admin/country/delete/'+${country.id}}">Delete</a>
+                        <a class="col-2" sec:authorize="hasRole('ADMIN')"
+                           th:href="@{'/admin/city/create/'+${country.id}}">Add City</a>
                     </div>
                     <div class="row m-table-element p1 m-table-row-subelement-hidden mb-3">
                         <div class="row col-12 p1 city-row" th:each="city : ${country.getCities()}">
+
+                            <!--<div class="offset-1 col-2" th:text="'City name'"></div>-->
+                            <!---->
                             <div class="col-4">
                                 <a th:text="${city.getCityName()}"></a>
                             </div>
                             <div class="col-8">
-                                <a class="col-1" th:href="@{'/admin/city/edit-city/'+${city.id}+'/'+${country.id}}">Edit city</a>
-                                <a class="col-1" th:href="@{'/admin/city/delete-city/'+${city.id}}">Delete city</a>
-                                <a class="col-1" th:href="@{'/admin/hotel/create/'+${city.id}}">Add hotel</a>
-                                <a class="col-1" th:href="@{'/admin/airport/create/'+${city.id}}">Add airport</a>
-                                <a class="col-1" th:href="@{'/admin/hotel/list/'+${city.id}}">List hotels</a>
-                                <a class="col-1" th:href="@{'/admin/airport/list/'+${city.id}}">List airports</a>
+                                <a class="col-1" sec:authorize="hasRole('ADMIN')"
+                                   th:href="@{'/admin/city/edit-city/'+${city.id}+'/'+${country.id}}">Edit city</a>
+                                <a class="col-1" sec:authorize="hasRole('ADMIN')"
+                                   th:href="@{'/admin/city/delete-city/'+${city.id}}">Delete city</a>
+                                <a class="col-1" sec:authorize="hasRole('ADMIN')"
+                                   th:href="@{'/admin/hotel/create/'+${city.id}}">Add hotel</a>
+                                <a class="col-1" sec:authorize="hasRole('ADMIN')"
+                                   th:href="@{'/admin/airport/create/'+${city.id}}">Add airport</a>
+                                <a class="col-1" sec:authorize="hasRole('ADMIN')"
+                                   th:href="@{'/admin/hotel/list/'+${city.id}}">List hotels</a>
+                                <a class="col-1" sec:authorize="hasRole('ADMIN')"
+                                   th:href="@{'/admin/airport/list/'+${city.id}}">List airports</a>
                             </div>
 
                         </div>

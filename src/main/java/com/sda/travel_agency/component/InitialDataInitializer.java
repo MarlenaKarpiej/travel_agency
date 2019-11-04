@@ -287,6 +287,7 @@ public class InitialDataInitializer implements
         if (!appUserRepository.existsByEmail(username)) {
             AppUser appUser = new AppUser();
             appUser.setEmail(username);
+            appUser.setCart(new Cart());
             appUser.setPassword(passwordEncoder.encode(password));
 
             appUser.setRoles(new HashSet<>(findRoles(roles)));

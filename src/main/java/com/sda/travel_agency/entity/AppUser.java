@@ -1,9 +1,8 @@
 package com.sda.travel_agency.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -23,4 +22,10 @@ public class AppUser {
 
     @ManyToMany()
     private Set<UserRole> roles;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Cart cart;
 }

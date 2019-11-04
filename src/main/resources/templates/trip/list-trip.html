@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <th:block th:include="templates :: headers"></th:block>
@@ -19,24 +19,23 @@
             <div class="list-group list-group-flush">
                 <div class="row m-table-header m-table-element p-1 m-table-row mb-12">
                     <div class="offset-1 col-2" th:text="'Country name'"></div>
-                    <div class="col-3" th:text="'City name'"></div>
+                    <div class="col-2" th:text="'City name'"></div>
                     <div class="col-2" th:text="'Adult Price'"></div>
                     <div class="col-2" th:text="'Number of days'"></div>
-                    <div class="col-2"></div>
+                    <div class="col-3"></div>
                 </div>
                 <th:block th:each="trip : ${trips}">
                     <div class="row m-table-element p-1 m-table-row mb-3">
-
                         <div class="offset-1 col-2">
                             <a th:text="${trip.getToAirport().getCity().getCountry().getCountryName()}"></a>
                         </div>
-                        <div class="col-3" th:text="${trip.getToAirport().getCity().getCityName()}"></div>
+                        <div class="col-2" th:text="${trip.getToAirport().getCity().getCityName()}"></div>
                         <div class="col-2" th:text="${trip.getAdultPrice()}"></div>
                         <div class="col-2" th:text="${trip.getNumberOfDays()}"></div>
-                        <a class="col-2" th:href="@{'/trip/details/'+${trip.id}}">Details</a>
+                        <a class="col-1" th:href="@{'/trip/details/'+${trip.id}}">Details</a>
+                        <a class="col-1" sec:authorize="hasRole('ADMIN')" th:href="@{'/admin/trip/edit/'+${trip.id}}">Edit</a>
+                        <a class="col-1" sec:authorize="hasRole('ADMIN')" th:href="@{'/admin/trip/delete/'+${trip.id}}">Delete</a>
                     </div>
-
-
                 </th:block>
             </div>
             <div th:if="${trips.isEmpty()}">
@@ -49,11 +48,13 @@
                     <a class="page-link"
                        th:href="@{/trip/list-trip(page=${trips.getNumber()-1}, size=${trips.getSize()})}">Previous</a>
                 </li>
+
                 <li class="page-item" th:each="number : ${#numbers.sequence(0, trips.getTotalPages()-1)}">
                     <a class="page-link"
                        th:href="@{/trip/list-trip(page=${number}, size=${trips.getSize()})}"
-                       th:text="${number}"></a>
+                       th:text="${number+1}"></a>
                 </li>
+
                 <li class="page-item" th:if="${trips.getNumber()+1<=trips.getTotalPages()}">
                     <a class="page-link" th:if="${trips.getNumber()+1<trips.getTotalPages()}"
                        th:href="@{/trip/list-trip(page=${trips.getNumber()+1}, size=${trips.getSize()})}">Next</a>

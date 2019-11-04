@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -19,12 +20,11 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private AppUser appUser;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Cart cart;
 
     private int adultSeat;
     private int childSeats;
-    private float price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Trip trip;

@@ -1,10 +1,7 @@
 package com.sda.travel_agency.entity;
 
 import com.sda.travel_agency.model.MealsType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
@@ -60,8 +57,13 @@ public class Trip {
     @Column(nullable = true)
     private byte[] data;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "trip")
     private List<Purchase> purchases;
+
+    @ManyToOne
+    private Cart cart;
 
     public Trip(@NotNull Airport fromAirport,
                 @NotNull Airport toAirport,

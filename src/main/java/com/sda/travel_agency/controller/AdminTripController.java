@@ -30,12 +30,6 @@ public class AdminTripController {
     @Autowired
     private AirportService airportService;
 
-    @Autowired
-    private CountryService countryService;
-
-    @Autowired
-    private CityService cityService;
-
     @GetMapping("/create") //adres url
     public String addNewTripForm(Model model) {
         model.addAttribute("newTrip", new TripDto());

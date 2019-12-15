@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -23,9 +21,16 @@ public class Purchase {
     @ManyToOne(fetch = FetchType.EAGER)
     private Cart cart;
 
-    private int adultSeat;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Bill bill;
+
+    private int adultSeats;
     private int childSeats;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Trip trip;
+
+    public double calculatePrice() {
+        return (adultSeats * trip.getAdultPrice()) + (childSeats * trip.getChildPrice());
+    }
 }

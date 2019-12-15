@@ -27,9 +27,8 @@
         <div class="card shadow-sm p-1 bg-white rounded mb-3">
             <div class="row colored-row">
                 <div class="col-5">
-                    <!--<div class="col-5" th:if="${trip.getData() != null}">-->
                     <img th:if="${base64Data == null}" th:src="@{'/img/nophoto.png'}" width="100%">
-                    <!--</div>-->
+                    <!--<img th:if="${base64Data == null}" th:src="@{'/img/'+${trip.getHotel().getCity().getId()}+'.jpg'}" width="100%">-->
                     <img th:if="${base64Data != null}" id="photo" th:src="'data:image/png;base64,'+${base64Data}" width="100%">
                 </div>
                 <div class="col-7">
@@ -60,14 +59,9 @@
                     </div>
                     <div class="row colored-row">
                         <div class="col-3" for="mealsType">Meals type:</div>
-                        <div class="col-4" div id="mealsType" th:text="${trip.getMealsType().getName()}"></div>
+                        <div class="col-4" id="mealsType" th:text="${trip.getMealsType().getName()}"></div>
                     </div>
-
-
-                    <!--<button class="btn btn-outline-primary" th:action="" th:text="Buy now"></button>-->
-
-                    <div id="map"></div>
-
+                    <a class="btn btn-outline-primary offset-2" th:href="@{'/purchase/buy/'+${trip.getId()}}">Buy now</a>
                 </div>
             </div>
         </div>

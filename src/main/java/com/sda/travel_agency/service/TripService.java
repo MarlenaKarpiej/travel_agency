@@ -13,8 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
-import java.net.ContentHandler;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,7 +23,7 @@ public class TripService {
     private final AirportService airportService;
     private final HotelService hotelService;
 
-    public void  createOrUpdateTripForCountry(TripDto tripDto, MultipartFile file) throws IOException {
+    public void createOrUpdateTripForCountry(TripDto tripDto, MultipartFile file) throws IOException {
         Optional<Airport> airportFlyOut = airportService.findAirportById(tripDto.getFromAirport());
         Optional<Airport> airportFlyBack = airportService.findAirportById(tripDto.getToAirport());
         Optional<Hotel> hotel = hotelService.findHotelById(tripDto.getHotel());
@@ -48,6 +46,13 @@ public class TripService {
     }
 
 
+    public int getNumberOfTakenSeats(Long tripId) {
+        Integer result = tripRepository.findHowManyPurchasesWereMade(tripId);
+        if (result == null) {
+            return 0;
+        }
+        return result;
+    }
 
     public Page<Trip> getAllTrip(Pageable pageable) {
         return tripRepository.findAll(pageable);
@@ -87,7 +92,7 @@ public class TripService {
         throw new EntityNotFoundException("ni ma");
     }
 
-    public void editTrip(Long editedIdentifier, TripDto dto,MultipartFile file) throws IOException {
+    public void editTrip(Long editedIdentifier, TripDto dto, MultipartFile file) throws IOException {
         Optional<Trip> editedTrip = tripRepository.findById(editedIdentifier);
         if (editedTrip.isPresent()) {
             Trip trip = editedTrip.get();

@@ -28,4 +28,10 @@ public class AppUser {
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Cart cart;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<Bill> bills;
 }

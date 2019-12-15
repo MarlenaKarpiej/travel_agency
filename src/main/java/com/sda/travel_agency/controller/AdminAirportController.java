@@ -27,7 +27,8 @@ public class AdminAirportController {
     private CityService cityService;
 
     @PostMapping("/create/{cityId}")
-    public String addNewAirport(@ModelAttribute("newAirport") Airport airport, @PathVariable("cityId") Long cityId) {
+    public String addNewAirport(@ModelAttribute("newAirport") Airport airport,
+                                @PathVariable("cityId") Long cityId) {
         airportService.createOrUpdateAirportForCity(airport, cityId);
         return "redirect:/admin/airport/list";
     }

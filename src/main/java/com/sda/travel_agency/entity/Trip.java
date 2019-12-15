@@ -50,7 +50,7 @@ public class Trip {
 
     private boolean promoted;
 
-    private int seatsNumber;
+    private int seatsNumber;//20
 
 
     @Lob
@@ -62,8 +62,6 @@ public class Trip {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "trip")
     private List<Purchase> purchases;
 
-    @ManyToOne
-    private Cart cart;
 
     public Trip(@NotNull Airport fromAirport,
                 @NotNull Airport toAirport,

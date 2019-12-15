@@ -1,10 +1,7 @@
 package com.sda.travel_agency.service;
 
 import com.sda.travel_agency.entity.City;
-import com.sda.travel_agency.entity.Country;
 import com.sda.travel_agency.entity.Hotel;
-import com.sda.travel_agency.repository.CityRepository;
-import com.sda.travel_agency.repository.CountryRepository;
 import com.sda.travel_agency.repository.HotelRepisitory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
